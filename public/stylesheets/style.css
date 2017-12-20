@@ -1,0 +1,236 @@
+body {
+  height:100%;
+  width:100%;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.pageLayout{
+
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+  height:100%;
+  width:100%;
+}
+.pageLayout__topbar{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+
+  height:80px;
+}
+.pageLayout__content{
+
+  position:absolute;
+    top:80px;
+    left:0;
+    right:0;
+    bottom:0;
+}
+.pageLayout__side{
+
+  position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+
+  width:30%;
+}
+
+.pageLayout__main{
+
+  position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+
+  width:70%;
+}
+
+.topbar{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+}
+
+.siteLogo{
+  font-size:30px;
+  line-height:1;
+}
+
+.toolsLayout{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.toolsLayout__tabs{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:50px;
+}
+
+.toolsLayout__panels{
+  position:absolute;
+    top:30px;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.toolsTabs{
+
+
+  height:100%;
+  overflow:hidden;
+}
+
+.toolsTabs__tab{
+  background:#aaa;
+
+  box-sizing:border-box;
+  
+  float:left;
+  width:33.333333333%;
+  height:100%;
+
+  border:1px solid #eee;
+  border-bottom:0;
+
+  border-radius:3px 3px 0px 0px;
+  text-align:center;
+
+}
+.toolsTabs__tab.--active{
+  background:#fff;
+
+  height:100%;
+}
+
+
+.toolsPanels{
+  background:#fff;
+
+  padding:3px;
+
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  
+}
+
+.toolsPanels__panel{
+  display:none;
+
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  overflow:auto;
+  padding:5px;:
+}
+
+.toolsPanels__panel.--active{
+  display:block;
+}
+
+
+.stumpsTable{
+  overflow:hidden;
+
+}
+
+.stumpTable__item {
+  float:left;
+  box-sizing:border-box;
+
+  width:33.333333333%;
+  height:60px;
+
+  text-align:center;
+  font-size:50px;
+  line-height:50px;
+
+
+  padding:3px;
+
+}
+
+.stumpExample{
+  background:#eee;
+  
+}
+
+
+.stringStump{
+
+}
+
+.stringStump__text{
+
+}
+
+.stringStump__font{
+
+}
+
+.stringStump__color{
+
+}
+
+.stringStump__output {
+
+}
+
+.outputBox{
+  border:dashed 3px pink;
+
+}
+
+.outputBox__content {
+}
+
+
+.mainPanel{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.teePanel{ 
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+  padding:5px;
+
+}
+
+
+
+
+
+

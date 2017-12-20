@@ -1,0 +1,83 @@
+extends layout
+
+block content
+  .pageLayout
+    .pageLayout__topbar
+      .topbar
+        .siteLogo 
+          | ARTON <br>
+          | ARTBOT
+
+    .pageLayout__content
+      .pageLayout__side
+        .toolsLayout
+          .toolsLayout__tabs
+            .toolsTabs
+              .toolsTabs__tab スタンプ
+              .toolsTabs__tab.--active 文字
+              .toolsTabs__tab オリジナル
+
+          .toolsLayout__panels
+            .toolsPanels
+              .toolsPanels__panel
+                .stumpsTable
+                  each item in "OOXVMTCIUOXVMTCIUOXVMTCIUOXVMTCIUXVMTCIU"
+                    .stumpTable__item
+                      .stumpExample= item
+            .toolsPanels__panel.--active
+              .stringStump
+                //text, font, color
+
+                h3 いれたいもじ
+                input.stringStump__text(type="text" name="text" value="ARTON")
+
+                h3 フォント
+                label ゴシック体
+                  input.stringStump__font(type="radio" name="font" value="gothic")
+                label セリフ体
+                  input.stringStump__font(type="radio" name="font" value="serif" checked)
+                label カリグラフィー
+                  input.stringStump__font(type="radio" name="font" value="callig")
+
+                h3 いろ
+                input.stringStump__color(type="text" name="color" value="#fac")
+                p todo カラーチューザー
+
+                h3 できあがり
+                .stringStump__output 
+                  .outputBox
+                    .outputBox__content(style="color:#fac;font-family:serif;") ARTON
+
+                p ↑ Teeエリアに持っていこう！
+
+            .toolsPanels__panel
+              p original
+
+      .pageLayout__main
+        .mainPanel
+          .teePanel
+        
+
+    
+
+    script.
+      const tabs = Array.from(document.querySelectorAll(".toolsTabs__tab"))
+      const panels = Array.from(document.querySelectorAll(".toolsPanels__panel"))
+
+      tabs.forEach((tab, index)=>{
+        tab.addEventListener("click",(e)=>{
+          console.log(tab,index);
+          tabs.forEach((tab)=>{
+            tab.classList.remove("--active");
+          });
+
+          tabs[index].classList.add("--active");
+          panels.forEach((panel)=>{
+            panel.classList.remove("--active");
+          });
+          panels[index].classList.add("--active");
+        });
+      });
+      
+
+
