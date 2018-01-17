@@ -164,7 +164,6 @@ a {
   box-sizing:border-box;
 
   width:33.333333333%;
-  height:60px;
 
   text-align:center;
   font-size:50px;
@@ -178,6 +177,12 @@ a {
 .stumpExample{
   background:#eee;
   
+}
+
+.stumpExample__img{
+  width:100%;
+
+  vertical-align:bottom;
 }
 
 

@@ -21,9 +21,10 @@ block content
             .toolsPanels
               .toolsPanels__panel
                 .stumpsTable
-                  each item in "OOXVMTCIUOXVMTCIUOXVMTCIUOXVMTCIUXVMTCIU"
+                  each item in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
                     .stumpTable__item
-                      .stumpExample= item
+                      .stumpExample
+                        img.stumpExample__img(src="/images/kotodamas/#{item}.png")
             .toolsPanels__panel.--active
               .stringStump
                 //text, font, color

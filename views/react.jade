@@ -1,0 +1,36 @@
+extends layout
+
+block head-end
+  script(src="https://unpkg.com/react@16/umd/react.development.js")
+  script(src="https://unpkg.com/react-dom@16/umd/react-dom.development.js")
+  script(src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js")
+
+block content
+
+  div#root
+  div#module
+
+  script(type="text/babel").
+    
+    ReactDOM.render(<h1>hello</h1>, document.getElementById('root'));
+
+
+    class Editor extends React.Component{
+      constructor(){
+        super();
+        this.state = {value: 'Type someThing here!'};
+
+      }
+
+      render(){
+        return (
+          <div className="hoge">
+            {this.state.value}
+          </div>
+        );
+        
+      }
+    }
+
+
+    ReactDOM.render(<Editor />, document.getElementById('module'));
