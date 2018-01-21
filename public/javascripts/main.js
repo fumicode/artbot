@@ -19,8 +19,9 @@ tabs.forEach((tab, index)=>{
 
 
 const stumpExamples = Array.from(document.querySelectorAll(".stumpExample"))
-const artwork_inner = document.querySelector(".artwork__inner")
+const artworkInner = document.querySelector(".artwork__inner")
 const stump_proto  = document.querySelector(".stump");
+const textStumpProto  = document.querySelector(".textStump");
 
 
 // すべてのスタンプ例に、イベントを追加
@@ -36,7 +37,7 @@ stumpExamples.forEach((stumpExample, index) =>{
     copied_stump.appendChild(new_img);
 
     //どうやってやるのかわからん。そろそろReactの方がいいんじゃないか？
-    artwork_inner.appendChild(copied_stump);
+    artworkInner.appendChild(copied_stump);
 
     setDraggable();
   });
@@ -49,10 +50,22 @@ textProtoBox.addEventListener("click", function(){
 });
 
 function createText(){
-  const new_text = document.querySelector("#textProto").cloneNode();
+  const textProto = document.querySelector("#textProto")
+  
+  console.log(textProto);
 
   //どうやってやるのかわからん。そろそろReactの方がいいんじゃないか？
-  artwork_inner.appendChild(copied_text);
+
+  const newTextStump = textStumpProto.cloneNode();
+
+  console.log(typeof textProto.getAttribute("style"));
+
+  newTextStump.setAttribute("style", textProto.getAttribute("style") + (textStumpProto.getAttribute("style")));
+  newTextStump.appendChild(textProto.childNodes[0].cloneNode());
+
+  artworkInner.appendChild(newTextStump);
+
+  console.log(newTextStump);
   setDraggable();
 }
 
