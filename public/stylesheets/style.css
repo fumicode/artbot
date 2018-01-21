@@ -166,15 +166,14 @@ a {
   width:33.333333333%;
 
   text-align:center;
-  font-size:50px;
   line-height:50px;
-
 
   padding:3px;
 
 }
 
 .stumpExample{
+  position:relative;
   background:#eee;
   
 }
@@ -183,6 +182,34 @@ a {
   width:100%;
 
   vertical-align:bottom;
+}
+
+.stumpExample__cover{
+  display:none;
+  position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+
+  background-color:rgba(0,0,0,0.3);
+
+}
+
+.stumpExample:hover .stumpExample__cover{
+  display:block;
+}
+
+.stumpExample__addButton{
+  margin:10%;
+  border:1px solid;
+  border-radius:50%;
+  width:80%;
+  height:80%;
+
+  color:white;
+  color:white;
+
 }
 
 
@@ -235,6 +262,42 @@ a {
 
   background:skyblue;
 }
+
+
+.artwork{
+  position:relative;
+  width:100%;
+
+  padding-top:80%;
+  
+  height:0px;
+
+  overflow:hidden;
+  
+  background:white;
+}
+
+
+.artwork__inner{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.stump{
+  position:absolute;
+
+
+}
+
+
+.stump__img{
+  width:100%;
+
+}
+
 
 
 
