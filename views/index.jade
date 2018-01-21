@@ -52,8 +52,8 @@ block content
 
                   h3 できあがり
                   .stringStump__output 
-                    .outputBox
-                      .outputBox__content(style="color:#fac;font-family:serif;") ARTON
+                    .outputBox#textProtoBox
+                      .outputBox__content#textProto(style="color:#fac;font-family:serif;") ARTON
 
                   p ↑ Teeエリアに持っていこう！
 
@@ -64,73 +64,18 @@ block content
         .mainPanel
           .teePanel
             //should be svg
+            .proto(style="display:none")
+              .stump(style="top:50%;left:50%;")
+                img.stump__img(src="/images/kotodamas/3.png")
+              .textStump(style="top:50%;left:50%;")
+
+
             .artwork
+              .artwork__printArea
               .artwork__inner
-                .stump(style="top:30px;left:50px;")
-                  img.stump__img(src="/images/kotodamas/3.png")
+                .textStump(style="top:50%;left:50%;") ARTON
 
-                .stump(style="top:100px;left:70px;")
-                  img.stump__img(src="/images/kotodamas/4.png")
-
-                .stump(style="top:70px;left:250px;")
-                  img.stump__img(src="/images/kotodamas/5.png")
-
-    
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-    script.
-      const tabs = Array.from(document.querySelectorAll(".toolsTabs__tab"))
-      const panels = Array.from(document.querySelectorAll(".toolsPanels__panel"))
-
-      tabs.forEach((tab, index)=>{
-        tab.addEventListener("click",(e)=>{
-          console.log(tab,index);
-          tabs.forEach((tab)=>{
-            tab.classList.remove("--active");
-          });
-
-          tabs[index].classList.add("--active");
-          panels.forEach((panel)=>{
-            panel.classList.remove("--active");
-          });
-          panels[index].classList.add("--active");
-        });
-      });
-
-      const stumpExamples = Array.from(document.querySelectorAll(".stumpExample"))
-
-      const artwork_inner = document.querySelector(".artwork__inner")
-
-
-      stumpExamples.forEach((stumpExample, index) =>{
-        const stump_img_src = stumpExample.children[0].getAttribute("src"); 
-
-        stumpExample.addEventListener("click", function(e ){
-
-
-          const stump_proto  = document.querySelector(".stump");
-
-          const copied_stump = stump_proto.cloneNode();
-
-          const new_img = stump_proto.children[0].cloneNode();
-
-
-          new_img.setAttribute("src",stump_img_src );
-
-          copied_stump.appendChild(new_img);
-
-          //どうやってやるのかわからん。そろそろReactの方がいいんじゃないか？
-          artwork_inner.appendChild(copied_stump);
-
-          setDraggable();
-        });
-      });
-
-      function setDraggable(){
-        const stumps =  $(".stump");
-        stumps.draggable();
-      }
-
-      setDraggable();
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+    script(src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js")
+    script(src="/javascripts/main.js")
 

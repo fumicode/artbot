@@ -236,6 +236,7 @@ a {
 .outputBox{
   border:dashed 3px pink;
 
+  padding:30px;
 }
 
 .outputBox__content {
@@ -274,7 +275,11 @@ a {
 
   overflow:hidden;
   
-  background:white;
+  background-color:white;
+
+  background: url( ../images/t-shirt.jpg ) center center no-repeat;
+  background-size: contain;
+
 }
 
 
@@ -284,12 +289,27 @@ a {
     left:0;
     right:0;
     bottom:0;
+
 }
+
+.artwork__printArea{
+  position:absolute;
+    top:25%;
+    left:35%;
+    right:35%;
+    bottom:15%;
+
+  border-style:dotted;
+  border-width:10px;
+
+
+}
+
 
 .stump{
   position:absolute;
-
-
+  width:150px;
+  height:150px;
 }
 
 
@@ -298,9 +318,10 @@ a {
 
 }
 
-
-
-
-
+.textStump{
+  position:absolute;
+  width:150px;
+  height:150px;
+}
 
 
