@@ -1,80 +1,88 @@
 extends layout
 
-block append head-end
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+block head-end
 
 block content
-  .pageLayout
-    .pageLayout__topbar
-      .topbar
-        .siteLogo 
-          | ARTON <br>
-          | ARTBOT
+  .deviceScreen.--iPadAir2
+    .pageLayout
+      .pageLayout__topbar
+        .topbar#topbar
+          .topbar__progressButtons
+            ol.progress
+              li.progress__item#progress_start
+                |start
+              li.progress__arrow
+              li.progress__item#progress_play.--current
+                |play
+              li.progress__arrow
+              li.progress__item#progress_check
+                |check
 
-    .pageLayout__content
-      .pageLayout__side
-        .toolsLayout
-          .toolsLayout__tabs
-            .toolsTabs
-              .toolsTabs__tab.--active スタンプ
-              .toolsTabs__tab 文字
-              .toolsTabs__tab オリジナル
-
-          .toolsLayout__panels
-            .toolsPanels
-              .toolsPanels__panel.--active
-                .stumpsTable
-                  each item in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
-                    .stumpTable__item
-                      .stumpExample
-                        img.stumpExample__img(src="/images/kotodamas/#{item}.png")
-                        .stumpExample__cover
-                          .stumpExample__addButton 追加する
-                           
-              .toolsPanels__panel
-                .stringStump
-                  //text, font, color
-
-                  h3 いれたいもじ
-                  input.stringStump__text(type="text" name="text" value="ARTON")
-
-                  h3 フォント
-                  label ゴシック体
-                    input.stringStump__font(type="radio" name="font" value="gothic")
-                  label セリフ体
-                    input.stringStump__font(type="radio" name="font" value="serif" checked)
-                  label カリグラフィー
-                    input.stringStump__font(type="radio" name="font" value="callig")
-
-                  h3 いろ
-                  input.stringStump__color(type="text" name="color" value="#fac")
-                  p todo カラーチューザー
-
-                  h3 できあがり
-                  .stringStump__output 
-                    .outputBox#textProtoBox
-                      .outputBox__content#textProto(style="color:#fac;font-family:serif;") ARTON
-
-                  p ↑ Teeエリアに持っていこう！
-
-              .toolsPanels__panel
-                p original
-
+            
+          .topbar__moveButtons
+            button.moveButton.--back BACK
+            button.moveButton.--next SUBMIT
+        
       .pageLayout__main
-        .mainPanel
+
+        .pageLayout__artBoard
           .teePanel
             //should be svg
-            .proto(style="display:none")
-              .stump(style="top:50%;left:50%;")
-                img.stump__img(src="/images/kotodamas/3.png")
-              .textStump(style="top:50%;left:50%;") ARTON
+            .artBoard
+              .artwork
+                .artwork__printArea
+                .artwork__inner
+                  .textStump(style="top:50%;left:50%;") ARTON
+                  .stump(style="top:50%;left:50%;")
+                    img.stump__img(src="/images/kotodamas/3.png")
+                  .textStump(style="top:20%;left:50%;") ARTON
 
-            .artwork
-              .artwork__printArea
-              .artwork__inner
-                .textStump(style="top:50%;left:50%;") ARTON
+        .pageLayout__toolBox
+          .toolBox
+            ul.toolBox__list
+              li.toolBox__tool
+                button.toolBox__button#tool_trash delete
+              li.toolBox__tool
+                button.toolBox__button#tool_layer_up layer up
+              li.toolBox__tool
+                button.toolBox__button#tool_layer_down layer down
+              li.toolBox__margin
+              li.toolBox__tool
+                button.toolBox__button#tool_zoom_in_out zoom in /out
+          
+      .pageLayout__stampPool
+        .stampPool
+          button.stampPool__foldButton
+          .stampCategory
+            .stampCategory__tabs
+              .stampCategory__tab#cat_tab_animal    ANIMAL
+              .stampCategory__tab#cat_tab_botanical BOTANICAL
+              .stampCategory__tab#cat_tab_motif     MOTIF
+              .stampCategory__tab#cat_tab_message   MESSAGE
+              .stampCategory__tab#cat_tab_sign      SIGN
+              .stampCategory__tab#cat_tab_alphabet  ALPHABET
 
-    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
-    script(src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js")
-    script(src="/javascripts/main.js")
+            .stampCategory__panel#cat_panel_animal
+              table.stampsTable
+                each _,index in Array(3)
+                  tr
+                    each _,index in Array(7)
+                      td.stampsTable__item aho
+                        .stampExample
+                          img.stampExample__img(src="/images/kotodamas/#{item}.png")
+                          .stampExample__cover
+                            .stampExample__addButton 追加する
 
+            .stampCategory__panel#cat_panel_botanical
+            .stampCategory__panel#cat_panel_motif    
+            .stampCategory__panel#cat_panel_message  
+            .stampCategory__panel#cat_panel_sign     
+            .stampCategory__panel#cat_panel_alphabet 
+        
+
+
+
+
+
+
+  

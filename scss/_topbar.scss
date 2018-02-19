@@ -1,0 +1,33 @@
+.topbar{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+  background:$light-gray;
+}
+
+
+.topbar__progressButtons{
+  position:absolute;
+    top:0;
+    left:40px;
+    bottom:0;
+
+  width:430px;
+
+  background:white;
+  
+}
+
+.topbar__moveButtons{
+  position:absolute;
+    top:0;
+    right:40px;
+    bottom:0;
+
+  width:160px;
+  background:brown;
+}
+

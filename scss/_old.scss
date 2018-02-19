@@ -1,0 +1,233 @@
+
+body {
+  height:100%;
+  width:100%;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.siteLogo{
+  font-size:30px;
+  line-height:1;
+}
+
+.toolsLayout{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.toolsLayout__tabs{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:50px;
+}
+
+.toolsLayout__panels{
+  position:absolute;
+    top:30px;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.toolsTabs{
+
+
+  height:100%;
+  overflow:hidden;
+}
+
+.toolsTabs__tab{
+  background:#aaa;
+
+  box-sizing:border-box;
+  
+  float:left;
+  width:33.333333333%;
+  height:100%;
+
+  border:1px solid #eee;
+  border-bottom:0;
+
+  border-radius:3px 3px 0px 0px;
+  text-align:center;
+
+}
+.toolsTabs__tab.--active{
+  background:#fff;
+
+  height:100%;
+}
+
+
+.toolsPanels{
+  background:#fff;
+
+  padding:3px;
+
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  
+}
+
+.toolsPanels__panel{
+  display:none;
+
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  overflow:auto;
+  padding:5px;
+}
+
+.toolsPanels__panel.--active{
+  display:block;
+}
+
+
+.stumpsTable{
+  overflow:hidden;
+
+}
+
+.stumpTable__item {
+  float:left;
+  box-sizing:border-box;
+
+  width:33.333333333%;
+
+  text-align:center;
+  line-height:50px;
+
+  padding:3px;
+
+}
+
+.stumpExample{
+  position:relative;
+  background:#eee;
+  
+}
+
+.stumpExample__img{
+  width:100%;
+
+  vertical-align:bottom;
+}
+
+.stumpExample__cover{
+  display:none;
+  position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+
+  background-color:rgba(0,0,0,0.3);
+
+}
+
+.stumpExample:hover .stumpExample__cover{
+  display:block;
+}
+
+.stumpExample__addButton{
+  margin:10%;
+  border:1px solid;
+  border-radius:50%;
+  width:80%;
+  height:80%;
+
+  color:white;
+  color:white;
+
+}
+
+
+.stringStump{
+
+}
+
+.stringStump__text{
+
+}
+
+.stringStump__font{
+
+}
+
+.stringStump__color{
+
+}
+
+.stringStump__output {
+
+}
+
+.outputBox{
+  border:dashed 3px pink;
+
+  padding:30px;
+}
+
+.outputBox__content {
+}
+
+
+.mainPanel{
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.teePanel{ 
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+  padding:5px;
+
+
+  background:skyblue;
+}
+
+
+
+
+.stump{
+  position:absolute;
+  width:150px;
+  height:150px;
+}
+
+
+.stump__img{
+  width:100%;
+
+}
+
+.textStump{
+  position:absolute;
+  width:150px;
+  height:150px;
+}
+
+
