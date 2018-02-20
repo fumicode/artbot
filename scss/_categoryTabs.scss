@@ -2,23 +2,22 @@
   border-bottom: 5px solid;
   border-color :$light-gray;
   padding: 0 $stampPool-padding;
+
 }
 
-.categoryTabs__table{
+.categoryTabs__table.n{
   table-layout:fixed;
-  background:red;
+  width: 100% ;
 
-  margin:0;
-
+  height:$stampPool-tabs-height;
   margin-bottom:-5px;
-
 }
 
 .categoryTabs__row{
 
 }
 
-.categoryTabs__tab{
+.categoryTabs__tab{ //td
   
   border-bottom: 5px solid;
   border-color :$light-gray;
@@ -27,5 +26,6 @@
     border-color :$medium-gray;
   }
 
+  vertical-align:middle;
   text-align:center;
 }
