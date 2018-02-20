@@ -4,6 +4,21 @@ table {
   table-layout: fixed;
   text-align: left;
   width: 100%;
+
+  &.n {
+    margin: 0;
+    tr{
+      border-bottom:0;
+    }
+    th {
+      font-weight: normal;
+    }
+
+    td {
+      padding: 0;
+    }
+
+  }
 }
 
 thead {
@@ -26,27 +41,4 @@ th {
 th,
 td {
   padding: $small-spacing $small-spacing $small-spacing 0;
-}
-
-table.n{
-  thead {
-  }
-
-  tbody {
-
-  }
-
-  tr {
-    border-bottom: none;
-
-  }
-
-  th {
-  }
-
-  th,
-  td {
-    padding: 0;
-  }
-
 }

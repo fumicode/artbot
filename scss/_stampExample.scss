@@ -1,0 +1,39 @@
+.stampExample{
+  position:relative;
+  background:#eee;
+  
+}
+
+.stampExample__img{
+  width:100%;
+
+  vertical-align:bottom;
+}
+
+.stampExample__cover{
+  display:none;
+  position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+
+  background-color:rgba(0,0,0,0.3);
+
+}
+
+.stampExample:hover .stampExample__cover{
+  display:block;
+}
+
+.stampExample__addButton{
+  margin:10%;
+  border:1px solid;
+  border-radius:50%;
+  width:80%;
+  height:80%;
+
+  color:white;
+  color:white;
+
+}

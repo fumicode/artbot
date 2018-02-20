@@ -1,17 +1,12 @@
 
 .artwork{
-  position:relative;
-  width:100%;
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
 
-  padding-top:80%;
-  
-  height:0px;
-
-  overflow:hidden;
-  
-  background-color:white;
-
-  background: url( ../images/t-shirt.jpg ) center center no-repeat;
+  background: url( ../images/tee.png ) center center no-repeat;
   background-size: contain;
 
 }

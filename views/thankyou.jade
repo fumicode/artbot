@@ -1,0 +1,16 @@
+extends layout
+
+block head-end
+
+block content
+  .deviceScreen.--iPadAir2
+    .pageLayout
+      .pageLayout__topbar
+        include ./includes/topbar
+        +topbar()
+          a.button.moveButton.--next(href="./") NEW
+            
+      .pageLayout__content
+        .thankyouPage(style="justify-content: center; align-items: center;  display: flex; height:100%; ")
+          | Thank you!
+

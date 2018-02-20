@@ -1,4 +1,3 @@
-
 .pageLayout{
   position:absolute;
     top:0;
@@ -20,25 +19,41 @@
 
 }
 
-.pageLayout__main{
+.pageLayout__content{
   position:absolute;
     top:$topbar-height; 
 
     left:0;
     right:0;
-    bottom:$stumpPool-height;
+    bottom:0;
 
-  background:white;
+  margin-top:25px;
+}
 
-  margin-top:60px;
+.pageLayout__main{
+  position:absolute;
+    top:0; 
+
+    left:0;
+    right:0;
+    bottom:$stampPool-height;
+
+
 
 }
 
 .pageLayout__artBoard{
-  margin:0px $artBoard-side-padding;
+  position:absolute;
+    top:0; 
+    left:$artBoard-side-padding;
+    right:$artBoard-side-padding;
+
+    bottom:0;
+
 }
 
 .pageLayout__toolBox{
+  width:$toolBox-width;
   position:absolute;
     top:0;
     right:$artBoard-side-padding - $toolBox-width;
@@ -46,12 +61,8 @@
 
 .pageLayout__stampPool{
   position:absolute;
-
-  height:$stumpPool-height;
     left:0;
     right:0;
     bottom:0;
 }
-
-
 

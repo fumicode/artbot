@@ -577,37 +577,40 @@ table {
   table-layout: fixed;
   text-align: left;
   width: 100%; }
+  /* line 8, scss/base/_tables.scss */
+  table.n {
+    margin: 0; }
+    /* line 10, scss/base/_tables.scss */
+    table.n tr {
+      border-bottom: 0; }
+    /* line 13, scss/base/_tables.scss */
+    table.n th {
+      font-weight: normal; }
+    /* line 17, scss/base/_tables.scss */
+    table.n td {
+      padding: 0; }
 
-/* line 9, scss/base/_tables.scss */
+/* line 24, scss/base/_tables.scss */
 thead {
   line-height: 1.2;
   vertical-align: bottom; }
 
-/* line 14, scss/base/_tables.scss */
+/* line 29, scss/base/_tables.scss */
 tbody {
   vertical-align: top; }
 
-/* line 18, scss/base/_tables.scss */
+/* line 33, scss/base/_tables.scss */
 tr {
   border-bottom: 1px solid #dedede; }
 
-/* line 22, scss/base/_tables.scss */
+/* line 37, scss/base/_tables.scss */
 th {
   font-weight: 600; }
 
-/* line 26, scss/base/_tables.scss */
+/* line 41, scss/base/_tables.scss */
 th,
 td {
   padding: 0.75em 0.75em 0.75em 0; }
-
-/* line 39, scss/base/_tables.scss */
-table.n tr {
-  border-bottom: none; }
-
-/* line 47, scss/base/_tables.scss */
-table.n th,
-table.n td {
-  padding: 0; }
 
 /* line 1, scss/base/_typography.scss */
 html {
@@ -773,46 +776,12 @@ a {
   line-height: 50px;
   padding: 3px; }
 
-/* line 120, scss/_old.scss */
-.stumpExample {
-  position: relative;
-  background: #eee; }
-
-/* line 126, scss/_old.scss */
-.stumpExample__img {
-  width: 100%;
-  vertical-align: bottom; }
-
-/* line 132, scss/_old.scss */
-.stumpExample__cover {
-  display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3); }
-
-/* line 144, scss/_old.scss */
-.stumpExample:hover .stumpExample__cover {
-  display: block; }
-
-/* line 148, scss/_old.scss */
-.stumpExample__addButton {
-  margin: 10%;
-  border: 1px solid;
-  border-radius: 50%;
-  width: 80%;
-  height: 80%;
-  color: white;
-  color: white; }
-
-/* line 181, scss/_old.scss */
+/* line 142, scss/_old.scss */
 .outputBox {
   border: dashed 3px pink;
   padding: 30px; }
 
-/* line 191, scss/_old.scss */
+/* line 152, scss/_old.scss */
 .mainPanel {
   position: absolute;
   top: 0;
@@ -820,33 +789,23 @@ a {
   right: 0;
   bottom: 0; }
 
-/* line 199, scss/_old.scss */
-.teePanel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 5px;
-  background: skyblue; }
-
-/* line 215, scss/_old.scss */
+/* line 162, scss/_old.scss */
 .stump {
   position: absolute;
   width: 150px;
   height: 150px; }
 
-/* line 222, scss/_old.scss */
+/* line 169, scss/_old.scss */
 .stump__img {
   width: 100%; }
 
-/* line 227, scss/_old.scss */
+/* line 174, scss/_old.scss */
 .textStump {
   position: absolute;
   width: 150px;
   height: 150px; }
 
-/* line 2, scss/_pageLayout.scss */
+/* line 1, scss/_pageLayout.scss */
 .pageLayout {
   position: absolute;
   top: 0;
@@ -856,7 +815,7 @@ a {
   height: 100%;
   width: 100%; }
 
-/* line 13, scss/_pageLayout.scss */
+/* line 12, scss/_pageLayout.scss */
 .pageLayout__topbar {
   position: absolute;
   top: 0;
@@ -864,46 +823,56 @@ a {
   right: 0;
   height: 70px; }
 
-/* line 23, scss/_pageLayout.scss */
-.pageLayout__main {
+/* line 22, scss/_pageLayout.scss */
+.pageLayout__content {
   position: absolute;
   top: 70px;
   left: 0;
   right: 0;
-  bottom: 315px;
-  background: white;
-  margin-top: 60px; }
+  bottom: 0;
+  margin-top: 25px; }
 
-/* line 37, scss/_pageLayout.scss */
+/* line 33, scss/_pageLayout.scss */
+.pageLayout__main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 315px; }
+
+/* line 45, scss/_pageLayout.scss */
 .pageLayout__artBoard {
-  margin: 0px 110px; }
+  position: absolute;
+  top: 0;
+  left: 110px;
+  right: 110px;
+  bottom: 0; }
 
-/* line 41, scss/_pageLayout.scss */
+/* line 55, scss/_pageLayout.scss */
 .pageLayout__toolBox {
+  width: 90px;
   position: absolute;
   top: 0;
   right: 20px; }
 
-/* line 47, scss/_pageLayout.scss */
+/* line 62, scss/_pageLayout.scss */
 .pageLayout__stampPool {
   position: absolute;
-  height: 315px;
   left: 0;
   right: 0;
   bottom: 0; }
 
 /* line 2, scss/_artwork.scss */
 .artwork {
-  position: relative;
-  width: 100%;
-  padding-top: 80%;
-  height: 0px;
-  overflow: hidden;
-  background-color: white;
-  background: url(../images/t-shirt.jpg) center center no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../images/tee.png) center center no-repeat;
   background-size: contain; }
 
-/* line 20, scss/_artwork.scss */
+/* line 15, scss/_artwork.scss */
 .artwork__inner {
   position: absolute;
   top: 0;
@@ -911,7 +880,7 @@ a {
   right: 0;
   bottom: 0; }
 
-/* line 29, scss/_artwork.scss */
+/* line 24, scss/_artwork.scss */
 .artwork__printArea {
   position: absolute;
   top: 25%;
@@ -926,8 +895,7 @@ a {
   position: relative;
   width: 768px;
   height: 1024px;
-  margin: 0 auto;
-  background: red; }
+  margin: 0 auto; }
 
 /* line 1, scss/_topbar.scss */
 .topbar {
@@ -939,21 +907,118 @@ a {
   background: #dedede; }
 
 /* line 12, scss/_topbar.scss */
-.topbar__progressButtons {
+.topbar__progress {
   position: absolute;
   top: 0;
   left: 40px;
   bottom: 0;
-  width: 430px;
-  background: white; }
+  width: 430px; }
 
-/* line 24, scss/_topbar.scss */
+/* line 23, scss/_topbar.scss */
 .topbar__moveButtons {
   position: absolute;
   top: 0;
   right: 40px;
   bottom: 0;
-  width: 160px;
-  background: brown; }
+  width: 260px;
+  text-align: right; }
+
+/* line 1, scss/_stampPool.scss */
+.stampPool {
+  position: relative;
+  background: pink; }
+
+/* line 8, scss/_stampPool.scss */
+.stampPool {
+  background: pink; }
+
+/* line 13, scss/_stampPool.scss */
+.stampPool__foldButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0; }
+
+/* line 1, scss/_categoryTabs.scss */
+.categoryTabs {
+  border-bottom: 5px solid;
+  border-color: #dedede;
+  padding: 0 70px; }
+
+/* line 8, scss/_categoryTabs.scss */
+.categoryTabs__table.n {
+  table-layout: fixed;
+  width: 100%;
+  height: 40px;
+  margin-bottom: -5px; }
+
+/* line 20, scss/_categoryTabs.scss */
+.categoryTabs__tab {
+  border-bottom: 5px solid;
+  border-color: #dedede;
+  vertical-align: middle;
+  text-align: center; }
+  /* line 25, scss/_categoryTabs.scss */
+  .categoryTabs__tab.--current {
+    border-color: #707070; }
+
+/* line 1, scss/_categoryPanels.scss */
+.categoryPanels {
+  padding: 0 70px;
+  margin-top: 20px; }
+
+/* line 1, scss/_stampsTable.scss */
+.stampsTable {
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 5px; }
+
+/* line 9, scss/_stampsTable.scss */
+.stampsTable__item {
+  margin: 0; }
+
+/* line 1, scss/_stampExample.scss */
+.stampExample {
+  position: relative;
+  background: #eee; }
+
+/* line 7, scss/_stampExample.scss */
+.stampExample__img {
+  width: 100%;
+  vertical-align: bottom; }
+
+/* line 13, scss/_stampExample.scss */
+.stampExample__cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3); }
+
+/* line 25, scss/_stampExample.scss */
+.stampExample:hover .stampExample__cover {
+  display: block; }
+
+/* line 29, scss/_stampExample.scss */
+.stampExample__addButton {
+  margin: 10%;
+  border: 1px solid;
+  border-radius: 50%;
+  width: 80%;
+  height: 80%;
+  color: white;
+  color: white; }
+
+/* line 1, scss/_teePanel.scss */
+.teePanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+  background: skyblue; }
 
 /*# sourceMappingURL=style.css.map */

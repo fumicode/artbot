@@ -9,7 +9,7 @@
 }
 
 
-.topbar__progressButtons{
+.topbar__progress{
   position:absolute;
     top:0;
     left:40px;
@@ -17,7 +17,6 @@
 
   width:430px;
 
-  background:white;
   
 }
 
@@ -27,7 +26,8 @@
     right:40px;
     bottom:0;
 
-  width:160px;
-  background:brown;
+  width:260px;
+
+  text-align:right;
 }
 
