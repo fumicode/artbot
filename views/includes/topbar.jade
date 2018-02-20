@@ -1,0 +1,17 @@
+mixin topbar()
+  .topbar#topbar
+    .topbar__progress
+      .progress
+        table.n.progress__table
+          tr
+            td.progress__item#progress_start
+              |start
+            td.progress__arrow >
+            td.progress__item#progress_play.--current
+              |play
+            td.progress__arrow >>
+            td.progress__item#progress_check
+              |check
+
+    .topbar__moveButtons
+      block

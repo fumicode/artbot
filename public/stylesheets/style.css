@@ -805,7 +805,7 @@ a {
   width: 150px;
   height: 150px; }
 
-/* line 2, scss/_pageLayout.scss */
+/* line 1, scss/_pageLayout.scss */
 .pageLayout {
   position: absolute;
   top: 0;
@@ -815,7 +815,7 @@ a {
   height: 100%;
   width: 100%; }
 
-/* line 13, scss/_pageLayout.scss */
+/* line 12, scss/_pageLayout.scss */
 .pageLayout__topbar {
   position: absolute;
   top: 0;
@@ -823,17 +823,24 @@ a {
   right: 0;
   height: 70px; }
 
-/* line 23, scss/_pageLayout.scss */
-.pageLayout__main {
+/* line 22, scss/_pageLayout.scss */
+.pageLayout__content {
   position: absolute;
   top: 70px;
   left: 0;
   right: 0;
-  bottom: 315px;
-  background: white;
-  margin-top: 60px; }
+  bottom: 0;
+  margin-top: 25px; }
 
-/* line 37, scss/_pageLayout.scss */
+/* line 33, scss/_pageLayout.scss */
+.pageLayout__main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 315px; }
+
+/* line 45, scss/_pageLayout.scss */
 .pageLayout__artBoard {
   position: absolute;
   top: 0;
@@ -841,14 +848,14 @@ a {
   right: 110px;
   bottom: 0; }
 
-/* line 47, scss/_pageLayout.scss */
+/* line 55, scss/_pageLayout.scss */
 .pageLayout__toolBox {
   width: 90px;
   position: absolute;
   top: 0;
   right: 20px; }
 
-/* line 54, scss/_pageLayout.scss */
+/* line 62, scss/_pageLayout.scss */
 .pageLayout__stampPool {
   position: absolute;
   left: 0;
@@ -888,8 +895,7 @@ a {
   position: relative;
   width: 768px;
   height: 1024px;
-  margin: 0 auto;
-  background: red; }
+  margin: 0 auto; }
 
 /* line 1, scss/_topbar.scss */
 .topbar {
@@ -906,17 +912,15 @@ a {
   top: 0;
   left: 40px;
   bottom: 0;
-  width: 430px;
-  background: white; }
+  width: 430px; }
 
-/* line 24, scss/_topbar.scss */
+/* line 23, scss/_topbar.scss */
 .topbar__moveButtons {
   position: absolute;
   top: 0;
   right: 40px;
   bottom: 0;
   width: 260px;
-  background: brown;
   text-align: right; }
 
 /* line 1, scss/_stampPool.scss */
