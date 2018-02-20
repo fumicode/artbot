@@ -26,7 +26,7 @@
 
     left:0;
     right:0;
-    bottom:$stumpPool-height;
+    bottom:$stampPool-height;
 
   background:white;
 
@@ -35,10 +35,17 @@
 }
 
 .pageLayout__artBoard{
-  margin:0px $artBoard-side-padding;
+  position:absolute;
+    top:0; 
+    left:$artBoard-side-padding;
+    right:$artBoard-side-padding;
+
+    bottom:0;
+
 }
 
 .pageLayout__toolBox{
+  width:$toolBox-width;
   position:absolute;
     top:0;
     right:$artBoard-side-padding - $toolBox-width;
@@ -46,12 +53,8 @@
 
 .pageLayout__stampPool{
   position:absolute;
-
-  height:$stumpPool-height;
     left:0;
     right:0;
     bottom:0;
 }
-
-
 

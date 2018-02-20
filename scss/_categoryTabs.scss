@@ -1,0 +1,31 @@
+.categoryTabs{
+  border-bottom: 5px solid;
+  border-color :$light-gray;
+  padding: 0 $stampPool-padding;
+}
+
+.categoryTabs__table{
+  table-layout:fixed;
+  background:red;
+
+  margin:0;
+
+  margin-bottom:-5px;
+
+}
+
+.categoryTabs__row{
+
+}
+
+.categoryTabs__tab{
+  
+  border-bottom: 5px solid;
+  border-color :$light-gray;
+
+  &.--current{
+    border-color :$medium-gray;
+  }
+
+  text-align:center;
+}

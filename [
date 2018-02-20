@@ -1,0 +1,17 @@
+.stampCategory{
+  
+}
+
+.stampCategory__tabs{
+  overflow:hidden;
+  
+  height:70px;
+
+}
+
+.stampCategory__panel{
+  float:left;
+
+  width:100px;
+  height:100%;
+}

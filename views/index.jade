@@ -7,18 +7,19 @@ block content
     .pageLayout
       .pageLayout__topbar
         .topbar#topbar
-          .topbar__progressButtons
-            ol.progress
-              li.progress__item#progress_start
-                |start
-              li.progress__arrow
-              li.progress__item#progress_play.--current
-                |play
-              li.progress__arrow
-              li.progress__item#progress_check
-                |check
+          .topbar__progress
+            .progress
+              table.n.progress__table
+                tr
+                  td.progress__item#progress_start
+                    |start
+                  td.progress__arrow >
+                  td.progress__item#progress_play.--current
+                    |play
+                  td.progress__arrow >>
+                  td.progress__item#progress_check
+                    |check
 
-            
           .topbar__moveButtons
             button.moveButton.--back BACK
             button.moveButton.--next SUBMIT
@@ -52,32 +53,38 @@ block content
           
       .pageLayout__stampPool
         .stampPool
-          button.stampPool__foldButton
+          button.stampPool__foldButton fold
+
           .stampCategory
             .stampCategory__tabs
-              .stampCategory__tab#cat_tab_animal    ANIMAL
-              .stampCategory__tab#cat_tab_botanical BOTANICAL
-              .stampCategory__tab#cat_tab_motif     MOTIF
-              .stampCategory__tab#cat_tab_message   MESSAGE
-              .stampCategory__tab#cat_tab_sign      SIGN
-              .stampCategory__tab#cat_tab_alphabet  ALPHABET
+              .categoryTabs
+                table.n.categoryTabs__table
+                  tr.categoryTabs__row
+                    td.categoryTabs__tab#cat_tab_animal    ANIMAL
+                    td.categoryTabs__tab#cat_tab_botanical BOTANICAL
+                    td.categoryTabs__tab#cat_tab_motif.--current MOTIF
+                    td.categoryTabs__tab#cat_tab_message   MESSAGE
+                    td.categoryTabs__tab#cat_tab_sign      SIGN
+                    td.categoryTabs__tab#cat_tab_alphabet  ALPHABET
 
-            .stampCategory__panel#cat_panel_animal
-              table.stampsTable
-                each _,index in Array(3)
-                  tr
-                    each _,index in Array(7)
-                      td.stampsTable__item aho
-                        .stampExample
-                          img.stampExample__img(src="/images/kotodamas/#{item}.png")
-                          .stampExample__cover
-                            .stampExample__addButton 追加する
+            .stampCategory__panels
+              .categoryPanels
+                .categoryPanels__panel#cat_panel_animal
+                  table.n.stampsTable
+                    each _,index in Array(2)
+                      tr
+                        each _,index in Array(6)
+                          td.stampsTable__item 
+                            .stampExample
+                              img.stampExample__img(src="/images/kotodamas/#{index+1}.png")
+                              .stampExample__cover
+                                .stampExample__addButton 追加する
 
-            .stampCategory__panel#cat_panel_botanical
-            .stampCategory__panel#cat_panel_motif    
-            .stampCategory__panel#cat_panel_message  
-            .stampCategory__panel#cat_panel_sign     
-            .stampCategory__panel#cat_panel_alphabet 
+                .categoryPanels__panel#cat_panel_botanical
+                .categoryPanels__panel#cat_panel_motif    
+                .categoryPanels__panel#cat_panel_message  
+                .categoryPanels__panel#cat_panel_sign     
+                .categoryPanels__panel#cat_panel_alphabet 
         
 
 
