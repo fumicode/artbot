@@ -8,9 +8,11 @@ block content
       .pageLayout__topbar
         include ./includes/topbar
         +topbar()
-          a.button.moveButton.--next(href="./play") START
+          form(action="/artworks" method="POST")
+            input.moveButton.--next(type="submit" value="START") 
             
       .pageLayout__content
         .welcomePage(style="justify-content: center; align-items: center;  display: flex; height:100%; ")
           | Welcome
 
+ 

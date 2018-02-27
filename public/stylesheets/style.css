@@ -408,7 +408,7 @@ button, [type='button'], [type='reset'], [type='submit'],
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
   line-height: 1;
-  padding: 0.75em 1.5em;
+  padding: 0.75em 0.75em;
   text-align: center;
   text-decoration: none;
   transition: background-color 150ms ease;
@@ -805,6 +805,18 @@ a {
   width: 150px;
   height: 150px; }
 
+/* line 9, scss/style.scss */
+body {
+  background: #c99; }
+
+/* line 2, scss/_deviceScreen.scss */
+.deviceScreen.--iPadAir2 {
+  position: relative;
+  width: 768px;
+  height: 1024px;
+  margin: 0 auto;
+  background: white; }
+
 /* line 1, scss/_pageLayout.scss */
 .pageLayout {
   position: absolute;
@@ -889,13 +901,6 @@ a {
   bottom: 15%;
   border-style: dotted;
   border-width: 10px; }
-
-/* line 2, scss/_deviceScreen.scss */
-.deviceScreen.--iPadAir2 {
-  position: relative;
-  width: 768px;
-  height: 1024px;
-  margin: 0 auto; }
 
 /* line 1, scss/_topbar.scss */
 .topbar {

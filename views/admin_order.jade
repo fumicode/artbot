@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  h1 注文 ##{order.ticket}
+
+  table
+    tr
+      td 整理券番号
+      td お客様名
+      td Tee サイズ / 数量
+      td Sweat サイズ / 数量
+      td 日時
+    tr
+      td= order.ticket
+      td= order.cust_name
+      td
+        table.n
+          tr
+            td Tee 36
+            td= order.items_sizes.tee.tee_36
+          tr
+            td Tee 38
+            td= order.items_sizes.tee.tee_38
+          tr
+            td Tee 40
+            td= order.items_sizes.tee.tee_40
+          tr
+            td Tee 42
+            td= order.items_sizes.tee.tee_42
+          tr
+            td Tee 44
+            td= order.items_sizes.tee.tee_44
+
+      td
+        table.n
+          tr
+            td Sweat 36
+            td= order.items_sizes.sweat.sweat_36
+          tr
+            td Sweat 40
+            td= order.items_sizes.sweat.sweat_40
+          tr
+            td Sweat 44
+            td= order.items_sizes.sweat.sweat_44
+      td= order.time
+
+
+            
+

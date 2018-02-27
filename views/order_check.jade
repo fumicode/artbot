@@ -1,0 +1,63 @@
+extends layout
+
+block head-end
+
+block content
+  .deviceScreen.--iPadAir2
+    .pageLayout
+      .pageLayout__topbar
+        include ./includes/topbar
+        +topbar()
+          a.button.moveButton.--next(href="#{path.join(url,'..')}") BACK
+          form(method="POST" action="#{url}" style="display:inline-block")
+            button.moveButton.--next(type="submit") SUBMIT
+            
+      .pageLayout__content
+        .checkPage
+          textarea=JSON.stringify(order)
+          form
+            table.n
+              tr
+                td
+                  img(src="/images/tee.png")
+                
+                  
+                td
+                  img(src="/images/sweat.png")
+                  
+              tr
+                td
+                  table.n
+                    tr
+                      td 36
+                      td 38
+                      td 40
+                      td 42
+                      td 44
+                    tr
+                      td #{order && order.items_sizes.tee.tee_36}
+                      td #{order && order.items_sizes.tee.tee_38}
+                      td #{order && order.items_sizes.tee.tee_40}
+                      td #{order && order.items_sizes.tee.tee_42}
+                      td #{order && order.items_sizes.tee.tee_44}
+
+                td
+                  table.n
+                    tr
+                      td 36
+                      td 40
+                      td 44
+                    tr
+                      td #{order && order.items_sizes.sweat.sweat_36}
+                      td #{order && order.items_sizes.sweat.sweat_40}
+                      td #{order && order.items_sizes.sweat.sweat_44}
+
+            hr.space 
+
+            table.n
+              tr
+                td 整理券番号
+                td #{order.ticket}
+                  
+                td お客様名
+                td #{order.cust_name}

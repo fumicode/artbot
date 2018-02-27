@@ -1,0 +1,84 @@
+extends layout
+
+block head-end
+
+block content
+  .deviceScreen.--iPadAir2
+    .pageLayout
+
+      form(method="POST" action="#{url}")
+        .pageLayout__topbar
+          include ./includes/topbar
+
+          +topbar()
+            a.button.moveButton.--next(href="#{path.join('/artworks', order.artwork.toString())}") BACK
+            button.moveButton.--next(type="submit") CHECK
+              
+        .pageLayout__content
+          .checkPage
+            textarea=JSON.stringify(order)
+            form
+              table.n
+                tr
+                  td
+                    img(src="/images/tee.png")
+                  
+                    
+                  td
+                    img(src="/images/sweat.png")
+                    
+                tr
+                  td
+                    table.n
+                      tr
+                        td 36
+                        td 38
+                        td 40
+                        td 42
+                        td 44
+                      tr
+                        td
+                          input(type="number" name="tee_size_36" 
+                            value="#{order.items_sizes.tee.tee_36}")
+                        td
+                          input(type="number" name="tee_size_38" 
+                            value="#{order.items_sizes.tee.tee_38}")
+                        td
+                          input(type="number" name="tee_size_40" 
+                            value="#{order.items_sizes.tee.tee_40}")
+                        td
+                          input(type="number" name="tee_size_42" 
+                            value="#{order.items_sizes.tee.tee_42}")
+                        td
+                          input(type="number" name="tee_size_44" 
+                            value="#{order.items_sizes.tee.tee_44}")
+                  td
+                    table.n
+                      tr
+                        td 36
+                        td 40
+                        td 44
+                      tr
+                        td
+                          input(type="number" name="sweat_size_36"
+                            value="#{order.items_sizes.sweat.sweat_36}")
+                        td
+                          input(type="number" name="sweat_size_40"
+                            value="#{order.items_sizes.sweat.sweat_40}")
+                        td
+                          input(type="number" name="sweat_size_44"
+                            value="#{order.items_sizes.sweat.sweat_44}")
+
+              hr.space 
+
+              table.n
+                tr
+                  td 整理券番号
+                  td 
+                    input(type="text" name="ticket" 
+                      value="#{order.ticket && order.ticket || ''}")
+                  td お客様名
+                  td 
+                    input(type="text" name="cust_name" 
+                      value="#{order.cust_name && order.cust_name || ''}")
+
