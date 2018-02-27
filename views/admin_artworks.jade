@@ -1,0 +1,13 @@
+extends layout
+
+block head-end
+
+block content
+  h1 アートワーク一覧
+
+  table
+
+    each artwork in artworks
+      tr
+        td
+          textarea= JSON.stringify(artwork)

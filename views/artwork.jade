@@ -1,0 +1,52 @@
+extends layout
+
+block head-end
+
+block body-end
+  script(src="/javascripts/bundle.js")
+
+block content
+  .deviceScreen.--iPadAir2
+    .pageLayout
+      .pageLayout__topbar
+        include ./includes/topbar
+        +topbar()
+          a.button.moveButton.--back(href="/") BACK
+          form(method="POST" action="/orders" style="display:inline-block")
+            input(type="hidden" name="artwork_id" value="#{artwork.id}")
+            input.moveButton.--next(type="submit" value="DONE") 
+        
+      .pageLayout__content
+        .pageLayout__main
+          .pageLayout__artBoard
+            .teePanel
+              //should be svg
+              .artBoard
+                .artwork
+                  .artwork__printArea
+                  .artwork__inner
+                    .stump(style="top:25%;left:37%;")
+                      img.stump__img(src="/images/stamps/600/animal/galloping_horse.png")
+
+                    .stump(style="top:40%;left:37%;")
+                      img.stump__img(src="/images/stamps/600/sign/smc_blocktype_black.png")
+
+
+          .pageLayout__toolBox
+            .toolBox
+              ul.toolBox__list
+                li.toolBox__tool
+                  button.toolBox__button#tool_trash delete
+                li.toolBox__tool
+                  button.toolBox__button#tool_layer_up up
+                li.toolBox__tool
+                  button.toolBox__button#tool_layer_down down
+                li.toolBox__margin
+                li.toolBox__tool
+                  button.toolBox__button#tool_zoom_in_out zoom 
+            
+        .pageLayout__stampPool
+          #StampPool
+
+
+    

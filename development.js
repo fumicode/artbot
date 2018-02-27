@@ -1,19 +1,17 @@
 import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin' ;
 
-const src  = path.resolve(__dirname, 'component')
-const dist = path.resolve(__dirname, 'public')
+const src  = path.resolve(__dirname, 'components')
+const dist = path.resolve(__dirname, 'public/javascripts')
 
 export default {
+  mode: "development",
   entry: src + '/index.jsx',
-
   output: {
     path: dist,
     filename: 'bundle.js'
   },
-
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
@@ -21,17 +19,8 @@ export default {
       }
     ]
   },
-
   resolve: {
-    modules: [path.join(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx']
+    extensions: ['.js']
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: src + '/index.html',
-      filename: 'index.html'
-    })
-  ]
+  plugins: []
 }
-
