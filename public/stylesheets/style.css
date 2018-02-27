@@ -807,7 +807,7 @@ a {
 
 /* line 9, scss/style.scss */
 body {
-  background: #c99; }
+  background: #fdd; }
 
 /* line 2, scss/_deviceScreen.scss */
 .deviceScreen.--iPadAir2 {
@@ -930,19 +930,19 @@ body {
 
 /* line 1, scss/_stampPool.scss */
 .stampPool {
-  position: relative;
-  background: pink; }
+  position: relative; }
 
-/* line 8, scss/_stampPool.scss */
-.stampPool {
-  background: pink; }
-
-/* line 13, scss/_stampPool.scss */
+/* line 10, scss/_stampPool.scss */
 .stampPool__foldButton {
   position: absolute;
   top: 0;
   right: 0;
   padding: 0; }
+
+/* line 8, scss/_stampCategory.scss */
+.stampCategory__panels {
+  height: 250px;
+  overflow: auto; }
 
 /* line 1, scss/_categoryTabs.scss */
 .categoryTabs {
@@ -970,17 +970,21 @@ body {
 /* line 1, scss/_categoryPanels.scss */
 .categoryPanels {
   padding: 0 70px;
-  margin-top: 20px; }
+  margin: 20px 0px; }
 
 /* line 1, scss/_stampsTable.scss */
 .stampsTable {
-  margin: 0;
+  margin: 0 -3px;
   border-collapse: separate;
-  border-spacing: 5px; }
+  border-spacing: 5px;
+  overflow: hidden; }
 
-/* line 9, scss/_stampsTable.scss */
+/* line 12, scss/_stampsTable.scss */
 .stampsTable__item {
-  margin: 0; }
+  margin: 0;
+  float: left;
+  padding: 0 3px 6px;
+  width: calc(100% / 6); }
 
 /* line 1, scss/_stampExample.scss */
 .stampExample {
@@ -1023,7 +1027,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 5px;
-  background: skyblue; }
+  padding: 5px; }
 
 /*# sourceMappingURL=style.css.map */

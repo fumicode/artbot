@@ -1,34 +1,4 @@
-
-
-const stamp_groups = {
-  "alphabet":[
-    "varsity_A.png",
-    "varsity_F.png",
-    "varsity_K.png",
-    "varsity_P.png",
-    "varsity_U.png",
-    "varsity_Z.png",
-    "varsity_B.png",
-    "varsity_G.png",
-    "varsity_L.png",
-    "varsity_Q.png",
-    "varsity_V.png",
-    "varsity_C.png",
-    "varsity_H.png",
-    "varsity_M.png",
-    "varsity_R.png",
-    "varsity_W.png",
-    "varsity_D.png",
-    "varsity_I.png",
-    "varsity_N.png",
-    "varsity_S.png",
-    "varsity_X.png",
-    "varsity_E.png",
-    "varsity_J.png",
-    "varsity_O.png",
-    "varsity_T.png",
-    "varsity_Y.png",
-  ],
+const stampGroups = {
   "animal":[
     "galloping_horse.png",
     "pencil_cat_3.png",
@@ -86,5 +56,37 @@ const stamp_groups = {
     "medallion_text_hot_pink.png",
     "smc_blocktype_hot_pink.png",
     "smc_medallion_hot_pink.png",
-  ]
+  ],
+  "alphabet":[
+    "varsity_A.png",
+    "varsity_F.png",
+    "varsity_K.png",
+    "varsity_P.png",
+    "varsity_U.png",
+    "varsity_Z.png",
+    "varsity_B.png",
+    "varsity_G.png",
+    "varsity_L.png",
+    "varsity_Q.png",
+    "varsity_V.png",
+    "varsity_C.png",
+    "varsity_H.png",
+    "varsity_M.png",
+    "varsity_R.png",
+    "varsity_W.png",
+    "varsity_D.png",
+    "varsity_I.png",
+    "varsity_N.png",
+    "varsity_S.png",
+    "varsity_X.png",
+    "varsity_E.png",
+    "varsity_J.png",
+    "varsity_O.png",
+    "varsity_T.png",
+    "varsity_Y.png",
+  ],
 };
+
+stampGroups.alphabet.sort();
+
+export {stampGroups}

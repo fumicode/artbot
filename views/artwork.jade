@@ -2,6 +2,9 @@ extends layout
 
 block head-end
 
+block body-end
+  script(src="/javascripts/bundle.js")
+
 block content
   .deviceScreen.--iPadAir2
     .pageLayout
@@ -9,14 +12,12 @@ block content
         include ./includes/topbar
         +topbar()
           a.button.moveButton.--back(href="/") BACK
-
           form(method="POST" action="/orders" style="display:inline-block")
             input(type="hidden" name="artwork_id" value="#{artwork.id}")
             input.moveButton.--next(type="submit" value="DONE") 
         
       .pageLayout__content
         .pageLayout__main
-
           .pageLayout__artBoard
             .teePanel
               //should be svg
@@ -24,11 +25,12 @@ block content
                 .artwork
                   .artwork__printArea
                   .artwork__inner
-                    textarea= JSON.stringify(artwork)
-                    .textStump(style="top:50%;left:50%;") ARTON
-                    .stump(style="top:50%;left:50%;")
-                      img.stump__img(src="/images/kotodamas/3.png")
-                    .textStump(style="top:20%;left:50%;") ARTON
+                    .stump(style="top:25%;left:37%;")
+                      img.stump__img(src="/images/stamps/600/animal/galloping_horse.png")
+
+                    .stump(style="top:40%;left:37%;")
+                      img.stump__img(src="/images/stamps/600/sign/smc_blocktype_black.png")
+
 
           .pageLayout__toolBox
             .toolBox
@@ -36,52 +38,15 @@ block content
                 li.toolBox__tool
                   button.toolBox__button#tool_trash delete
                 li.toolBox__tool
-                  button.toolBox__button#tool_layer_up layer up
+                  button.toolBox__button#tool_layer_up up
                 li.toolBox__tool
-                  button.toolBox__button#tool_layer_down layer down
+                  button.toolBox__button#tool_layer_down down
                 li.toolBox__margin
                 li.toolBox__tool
-                  button.toolBox__button#tool_zoom_in_out zoom in /out
+                  button.toolBox__button#tool_zoom_in_out zoom 
             
         .pageLayout__stampPool
-          .stampPool
-            button.stampPool__foldButton fold
-
-            .stampCategory
-              .stampCategory__tabs
-                .categoryTabs
-                  table.n.categoryTabs__table
-                    tr.categoryTabs__row
-                      td.categoryTabs__tab#cat_tab_animal    ANIMAL
-                      td.categoryTabs__tab#cat_tab_botanical BOTANICAL
-                      td.categoryTabs__tab#cat_tab_motif.--current MOTIF
-                      td.categoryTabs__tab#cat_tab_message   MESSAGE
-                      td.categoryTabs__tab#cat_tab_sign      SIGN
-                      td.categoryTabs__tab#cat_tab_alphabet  ALPHABET
-
-              .stampCategory__panels
-                .categoryPanels
-                  .categoryPanels__panel#cat_panel_animal
-                    table.n.stampsTable
-                      each _,index in Array(2)
-                        tr
-                          each _,index in Array(6)
-                            td.stampsTable__item 
-                              .stampExample
-                                img.stampExample__img(src="/images/kotodamas/#{index+1}.png")
-                                .stampExample__cover
-                                  .stampExample__addButton 追加する
-
-                  .categoryPanels__panel#cat_panel_botanical
-                  .categoryPanels__panel#cat_panel_motif    
-                  .categoryPanels__panel#cat_panel_message  
-                  .categoryPanels__panel#cat_panel_sign     
-                  .categoryPanels__panel#cat_panel_alphabet 
-          
-
-
-
-
+          #StampPool
 
 
     
