@@ -8,9 +8,15 @@ block content
       .pageLayout__topbar
         include ./includes/topbar
         +topbar()
-          a.button.moveButton.--next(href="./") NEW
+
+          table.n.topButtons
+            tr
+              td.topButtons__cell
+              td.topButtons__cell
+                a.button.moveButton.--back(href="/") 
+                  img(src="/images/button_new.png" alt="NEW")
             
       .pageLayout__content
         .thankyouPage(style="justify-content: center; align-items: center;  display: flex; height:100%; ")
-          | Thank you!
+          img(src="/images/thankyou.png" alt= "Thank you!"  style="width:600px")
 

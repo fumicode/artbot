@@ -11,10 +11,16 @@ block content
       .pageLayout__topbar
         include ./includes/topbar
         +topbar()
-          a.button.moveButton.--back(href="/") BACK
-          form(method="POST" action="/orders" style="display:inline-block")
-            input(type="hidden" name="artwork_id" value="#{artwork.id}")
-            input.moveButton.--next(type="submit" value="DONE") 
+          table.n.topButtons
+            tr
+              td.topButtons__cell
+                a.button.moveButton.--back(href="/") 
+                  img(src="/images/button_back.png" alt="BACK")
+              td.topButtons__cell
+                form(method="POST" action="/orders" style="display:inline-block")
+                  input(type="hidden" name="artwork_id" value="#{artwork.id}")
+                  button.moveButton.--next(type="submit") 
+                    img(src="/images/button_done.png" alt="DONE")
         
       .pageLayout__content
         .pageLayout__main
@@ -36,14 +42,19 @@ block content
             .toolBox
               ul.toolBox__list
                 li.toolBox__tool
-                  button.toolBox__button#tool_trash delete
+                  button.toolBox__button#tool_trash 
+                    img(src="/images/icon_trash.png")
                 li.toolBox__tool
-                  button.toolBox__button#tool_layer_up up
+                  button.toolBox__button#tool_layer_up 
+                    img(src="/images/icon_up.png")
                 li.toolBox__tool
-                  button.toolBox__button#tool_layer_down down
+                  button.toolBox__button#tool_layer_down
+                    img(src="/images/icon_down.png")
                 li.toolBox__margin
                 li.toolBox__tool
-                  button.toolBox__button#tool_zoom_in_out zoom 
+                  button.toolBox__button#tool_zoom
+                    img(src="/images/icon_zoom.png")
+
             
         .pageLayout__stampPool
           #StampPool

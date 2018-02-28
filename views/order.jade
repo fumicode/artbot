@@ -11,8 +11,14 @@ block content
           include ./includes/topbar
 
           +topbar()
-            a.button.moveButton.--next(href="#{path.join('/artworks', order.artwork.toString())}") BACK
-            button.moveButton.--next(type="submit") CHECK
+            table.n.topButtons
+              tr
+                td.topButtons__cell
+                  a.button.moveButton.--back(href="#{path.join('/artworks', order.artwork.toString())}") 
+                    img(src="/images/button_back.png" alt="BACK")
+                td.topButtons__cell
+                  button.moveButton.--next(type="submit") 
+                    img(src="/images/button_next.png" alt="CHECK")
               
         .pageLayout__content
           .checkPage

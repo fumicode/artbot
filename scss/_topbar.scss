@@ -8,16 +8,13 @@
   background:$light-gray;
 }
 
-
 .topbar__progress{
   position:absolute;
     top:0;
-    left:40px;
+    left:70px;
     bottom:0;
 
-  width:430px;
-
-  
+  width:360px;
 }
 
 .topbar__moveButtons{
@@ -26,7 +23,7 @@
     right:40px;
     bottom:0;
 
-  width:260px;
+  width:150px;
 
   text-align:right;
 }

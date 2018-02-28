@@ -1,0 +1,26 @@
+
+
+.toolBox{
+  
+}
+
+.toolBox__list{
+  
+}
+
+.toolBox__tool{
+  width:40px;
+  margin-bottom:30px;
+}
+
+.toolBox__button{
+  background:transparent;
+  padding:0;
+
+  &:hover{
+    background:transparent;
+
+    opacity:0.8;
+    
+  }
+}

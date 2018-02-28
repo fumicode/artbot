@@ -911,22 +911,41 @@ body {
   bottom: 0;
   background: #dedede; }
 
-/* line 12, scss/_topbar.scss */
+/* line 11, scss/_topbar.scss */
 .topbar__progress {
   position: absolute;
   top: 0;
-  left: 40px;
+  left: 70px;
   bottom: 0;
-  width: 430px; }
+  width: 360px; }
 
-/* line 23, scss/_topbar.scss */
+/* line 20, scss/_topbar.scss */
 .topbar__moveButtons {
   position: absolute;
   top: 0;
   right: 40px;
   bottom: 0;
-  width: 260px;
+  width: 150px;
   text-align: right; }
+
+/* line 6, scss/_progress.scss */
+.progress__item {
+  vertical-align: middle;
+  text-align: center;
+  height: 70px; }
+
+/* line 13, scss/_progress.scss */
+.progress__arrow {
+  vertical-align: middle;
+  text-align: center; }
+
+/* line 18, scss/_progress.scss */
+.progress__img {
+  height: 40px; }
+
+/* line 22, scss/_progress.scss */
+.progress__arrowImg {
+  height: 20px; }
 
 /* line 1, scss/_stampPool.scss */
 .stampPool {
@@ -1028,5 +1047,37 @@ body {
   right: 0;
   bottom: 0;
   padding: 5px; }
+
+/* line 2, scss/_topButtons.scss */
+.topButtons {
+  height: 70px; }
+
+/* line 6, scss/_topButtons.scss */
+.topButtons__cell {
+  vertical-align: middle;
+  text-align: center; }
+
+/* line 1, scss/_moveButton.scss */
+.moveButton {
+  background: transparent;
+  padding: 0;
+  height: 40px; }
+  /* line 6, scss/_moveButton.scss */
+  .moveButton img {
+    height: 40px; }
+
+/* line 11, scss/_toolBox.scss */
+.toolBox__tool {
+  width: 40px;
+  margin-bottom: 30px; }
+
+/* line 16, scss/_toolBox.scss */
+.toolBox__button {
+  background: transparent;
+  padding: 0; }
+  /* line 20, scss/_toolBox.scss */
+  .toolBox__button:hover {
+    background: transparent;
+    opacity: 0.8; }
 
 /*# sourceMappingURL=style.css.map */
