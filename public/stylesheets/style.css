@@ -1007,15 +1007,14 @@ body {
 
 /* line 1, scss/_stampExample.scss */
 .stampExample {
-  position: relative;
-  background: #eee; }
+  position: relative; }
 
-/* line 7, scss/_stampExample.scss */
+/* line 6, scss/_stampExample.scss */
 .stampExample__img {
   width: 100%;
   vertical-align: bottom; }
 
-/* line 13, scss/_stampExample.scss */
+/* line 12, scss/_stampExample.scss */
 .stampExample__cover {
   display: none;
   position: absolute;
@@ -1025,11 +1024,11 @@ body {
   right: 0;
   background-color: rgba(0, 0, 0, 0.3); }
 
-/* line 25, scss/_stampExample.scss */
+/* line 24, scss/_stampExample.scss */
 .stampExample:hover .stampExample__cover {
   display: block; }
 
-/* line 29, scss/_stampExample.scss */
+/* line 28, scss/_stampExample.scss */
 .stampExample__addButton {
   margin: 10%;
   border: 1px solid;
