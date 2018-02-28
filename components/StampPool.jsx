@@ -38,18 +38,20 @@ export class StampPool extends React.Component {
 
 
   renderPanel(){
-    const current_group = Object.keys(this.state.stampGroups)[this.state.currentGroupKey];
-    const stamps = this.state.stampGroups[ current_group ];
+    const currentGroupKey = Object.keys(this.state.stampGroups)[this.state.currentGroupKey];
+    const stamps = this.state.stampGroups[ currentGroupKey ];
 
     return pug`
-      .categoryPanels__panel
-        ul.n.stampsTable
-          each stamp,index in stamps
-            li.stampsTable__item(key=index)
-              .stampExample
-                img.stampExample__img(src= ${'/images/stamps/600/'+current_group+'/'+stamp})
-                .stampExample__cover
-                  .stampExample__addButton 追加する
+      .categoryPanels
+        each groupKey in Object.keys(this.state.stampGroups)
+          .categoryPanels__panel(className=${groupKey == currentGroupKey ? '--current':''} key=groupKey)
+            ul.n.stampsTable
+              each stamp,index in this.state.stampGroups[groupKey]
+                li.stampsTable__item(key=index)
+                  .stampExample
+                    img.stampExample__img(src= ${'/images/stamps/600/'+ groupKey +'/'+stamp})
+                    .stampExample__cover
+                      .stampExample__addButton 追加する
     `;
   }
 
@@ -64,7 +66,6 @@ export class StampPool extends React.Component {
             ${this.renderTabs()}
 
           .stampCategory__panels
-            .categoryPanels
               ${this.renderPanel()}
     `;
   }

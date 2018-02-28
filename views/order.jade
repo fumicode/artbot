@@ -26,11 +26,27 @@ block content
               table.n
                 tr
                   td
-                    img(src="/images/tee.png")
+                    div(style="position:relative; height:380px;")
+                      .artwork
+                        .artwork__printArea(style="top:50px;left:70px; transform:scale(0.7)")
+                          .artwork__inner
+                            .stump(style="top:10%;left:13%;")
+                              img.stump__img(src="/images/stamps/600/animal/galloping_horse.png")
+
+                            .stump(style="top:40%;left:15%;")
+                              img.stump__img(src="/images/stamps/600/sign/smc_blocktype_black.png")
                   
                     
                   td
-                    img(src="/images/sweat.png")
+                    div(style="position:relative;  height:380px; ")
+                      .artwork(style="background-image:url(/images/sweat.png);")
+                        .artwork__printArea(style="top:50px;left:70px; transform:scale(0.7)")
+                          .artwork__inner
+                            .stump(style="top:10%;left:13%;")
+                              img.stump__img(src="/images/stamps/600/animal/galloping_horse.png")
+
+                            .stump(style="top:40%;left:15%;")
+                              img.stump__img(src="/images/stamps/600/sign/smc_blocktype_black.png")
                     
                 tr
                   td
@@ -78,11 +94,11 @@ block content
 
               table.n
                 tr
-                  td 整理券番号
+                  td 整理券番号<br>Ticket number
                   td 
                     input(type="text" name="ticket" 
                       value="#{order.ticket && order.ticket || ''}")
-                  td お客様名
+                  td お客様名<br> Your name
                   td 
                     input(type="text" name="cust_name" 
                       value="#{order.cust_name && order.cust_name || ''}")

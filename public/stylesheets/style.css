@@ -895,12 +895,13 @@ body {
 /* line 24, scss/_artwork.scss */
 .artwork__printArea {
   position: absolute;
-  top: 25%;
-  left: 35%;
-  right: 35%;
-  bottom: 15%;
-  border-style: dotted;
-  border-width: 10px; }
+  top: 130px;
+  left: 155px;
+  width: 240px;
+  height: 320px;
+  border-style: dashed;
+  border-width: 5px;
+  border-color: #eee; }
 
 /* line 1, scss/_topbar.scss */
 .topbar {
@@ -990,6 +991,13 @@ body {
 .categoryPanels {
   padding: 0 70px;
   margin: 20px 0px; }
+
+/* line 6, scss/_categoryPanels.scss */
+.categoryPanels__panel {
+  display: none; }
+  /* line 11, scss/_categoryPanels.scss */
+  .categoryPanels__panel.--current {
+    display: block; }
 
 /* line 1, scss/_stampsTable.scss */
 .stampsTable {

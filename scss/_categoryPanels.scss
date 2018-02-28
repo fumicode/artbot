@@ -5,4 +5,13 @@
 
 .categoryPanels__panel{
   //include stampTable
+
+  display:none;
+
+  &.--current{
+    display:block;
+  }
+
 }
+
+
