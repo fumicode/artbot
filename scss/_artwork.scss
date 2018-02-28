@@ -23,13 +23,16 @@
 
 .artwork__printArea{
   position:absolute;
-    top:25%;
-    left:35%;
-    right:35%;
-    bottom:15%;
+    top:130px;
+    left:155px;
 
-  border-style:dotted;
-  border-width:10px;
+  width:240px;
+  height:320px;
+
+
+  border-style:dashed;
+  border-width:5px;
+  border-color:#eee;
 
 
 }
