@@ -991,6 +991,13 @@ body {
   padding: 0 70px;
   margin: 20px 0px; }
 
+/* line 6, scss/_categoryPanels.scss */
+.categoryPanels__panel {
+  display: none; }
+  /* line 11, scss/_categoryPanels.scss */
+  .categoryPanels__panel.--current {
+    display: block; }
+
 /* line 1, scss/_stampsTable.scss */
 .stampsTable {
   margin: 0 -3px;
