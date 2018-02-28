@@ -8,11 +8,19 @@ block content
       .pageLayout__topbar
         include ./includes/topbar
         +topbar()
-          form(action="/artworks" method="POST")
-            input.moveButton.--next(type="submit" value="START") 
+
+          table.n.topButtons
+            tr
+              td.topButtons__cell
+              td.topButtons__cell
+                form(action="/artworks" method="POST")
+                  button.moveButton.--next(type="submit") 
+                    img(src="/images/button_next.png" alt="START")
+
+
             
       .pageLayout__content
         .welcomePage(style="justify-content: center; align-items: center;  display: flex; height:100%; ")
-          | Welcome
+          img(src="/images/welcome.png" alt= "Welcome" style="width:600px")
 
  

@@ -8,9 +8,15 @@ block content
       .pageLayout__topbar
         include ./includes/topbar
         +topbar()
-          a.button.moveButton.--next(href="#{path.join(url,'..')}") BACK
-          form(method="POST" action="#{url}" style="display:inline-block")
-            button.moveButton.--next(type="submit") SUBMIT
+          table.n.topButtons
+            tr
+              td.topButtons__cell
+                a.button.moveButton.--back(href="#{path.join(url,'..')}") 
+                  img(src="/images/button_back.png" alt="BACK")
+              td.topButtons__cell
+                form(method="POST" action="#{url}" style="display:inline-block")
+                  button.moveButton.--next(type="submit") 
+                    img(src="/images/button_next.png" alt="CHECK")
             
       .pageLayout__content
         .checkPage

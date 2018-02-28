@@ -4,8 +4,21 @@
 }
 
 .progress__item{
+  vertical-align:middle;
+  text-align:center;
 
+  height:$topbar-height;
 }
-.progress__arrow{
 
+.progress__arrow{
+  vertical-align:middle;
+  text-align:center;
+}
+
+.progress__img{
+  height:40px;
+}
+
+.progress__arrowImg{
+  height:20px;
 }
