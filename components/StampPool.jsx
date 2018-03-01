@@ -1,8 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-export class StampPool extends React.Component {
-
+export default class StampPool extends React.Component {
   constructor(props){
     super();
 
@@ -10,7 +9,14 @@ export class StampPool extends React.Component {
       stampGroups : props.stampGroups,
       currentGroupKey :  0
     };
+    
+    this.stampClicked = (imagepath)=>{
+      if(typeof this.props.onStampSelected == "function"){
+        this.props.onStampSelected(imagepath);
+      }
+    }
   }
+
 
   changeGroup(index){
 
@@ -32,10 +38,17 @@ export class StampPool extends React.Component {
                   className=${Object.keys(this.state.stampGroups)[this.state.currentGroupKey] == stampGroupKey ? '--current' : ''} 
                   onClick=${()=>this.changeGroup(index)}) 
                   | ${stampGroupKey.toUpperCase()}
-
     `;
   }
 
+  renderStampExample(imagePath){
+    return pug`
+      .stampExample
+        img.stampExample__img(src= ${'/images/stamps/600/'+imagePath})
+        .stampExample__cover(onClick= ${()=>this.stampClicked(imagePath)} )
+          .stampExample__addButton 追加する
+    `;
+  }
 
   renderPanel(){
     const currentGroupKey = Object.keys(this.state.stampGroups)[this.state.currentGroupKey];
@@ -46,12 +59,9 @@ export class StampPool extends React.Component {
         each groupKey in Object.keys(this.state.stampGroups)
           .categoryPanels__panel(className=${groupKey == currentGroupKey ? '--current':''} key=groupKey)
             ul.n.stampsTable
-              each stamp,index in this.state.stampGroups[groupKey]
+              each stampImg,index in this.state.stampGroups[groupKey]
                 li.stampsTable__item(key=index)
-                  .stampExample
-                    img.stampExample__img(src= ${'/images/stamps/600/'+ groupKey +'/'+stamp})
-                    .stampExample__cover
-                      .stampExample__addButton 追加する
+                  ${this.renderStampExample(groupKey+'/'+stampImg)}
     `;
   }
 
