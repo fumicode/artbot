@@ -2,14 +2,23 @@ extends layout
 
 block head-end
 
+
+block body-end
+  script.
+    //サーバーからの値の受け渡しはこうするしかない
+    //もしくは、SPAにするか
+    window.data = {
+      artwork: !{ JSON.stringify(artwork) }
+    };
+
+  script(src="/javascripts/bundle.js")
+
 block content
   .deviceScreen.--iPadAir2
     .pageLayout
-
       form(method="POST" action="#{url}")
         .pageLayout__topbar
           include ./includes/topbar
-
           +topbar()
             table.n.topButtons
               tr
@@ -19,7 +28,6 @@ block content
                 td.topButtons__cell
                   button.moveButton.--next(type="submit") 
                     img(src="/images/button_next.png" alt="CHECK")
-              
         .pageLayout__content
           .checkPage
             form
@@ -27,27 +35,11 @@ block content
                 tr
                   td
                     div(style="position:relative; height:380px;")
-                      .artwork
-                        .artwork__printArea(style="top:50px;left:70px; transform:scale(0.7)")
-                          .artwork__inner
-                            .stump(style="top:10%;left:13%;")
-                              img.stump__img(src="/images/stamps/600/animal/galloping_horse.png")
-
-                            .stump(style="top:40%;left:15%;")
-                              img.stump__img(src="/images/stamps/600/sign/smc_blocktype_black.png")
-                  
-                    
+                      #ArtworkTee
                   td
                     div(style="position:relative;  height:380px; ")
-                      .artwork(style="background-image:url(/images/sweat.png);")
-                        .artwork__printArea(style="top:50px;left:70px; transform:scale(0.7)")
-                          .artwork__inner
-                            .stump(style="top:10%;left:13%;")
-                              img.stump__img(src="/images/stamps/600/animal/galloping_horse.png")
+                      #ArtworkSweat
 
-                            .stump(style="top:40%;left:15%;")
-                              img.stump__img(src="/images/stamps/600/sign/smc_blocktype_black.png")
-                    
                 tr
                   td
                     table.n

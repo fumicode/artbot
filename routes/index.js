@@ -46,6 +46,19 @@ router.get('/artworks/:artwork_id', function(req, res, next) {
   res.render('artwork', {artwork});
 });
 
+router.post('/artworks/:artwork_id', function(req, res, next) { 
+  const artwork_id =  req.params.artwork_id;
+
+  Artworks[artwork_id] = req.body;
+
+  res.json({
+    status:200,
+    message:"successfully saved",
+    received:req.body
+  });
+
+});
+
 
 router.post('/orders', function(req, res, next) { 
 
@@ -70,7 +83,9 @@ router.get('/orders/:order_id', function(req, res, next) {
     return next();
   }
 
-  res.render('order', {order});
+  const artwork = Artworks[order.artwork]
+
+  res.render('order', {order, artwork});
 });
 
 router.post('/orders/:order_id', function(req, res, next) { 
