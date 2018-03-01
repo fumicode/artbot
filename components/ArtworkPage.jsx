@@ -7,6 +7,8 @@ import ToolBox   from './ToolBox.jsx';
 import {stampGroups} from '../models/Stamps.js';
 import {StampPrototype} from '../models/Artwork.js';
 
+import superagent from 'superagent';
+
 
 export default class ArtworkPage extends React.Component {
   constructor(props){
@@ -17,24 +19,30 @@ export default class ArtworkPage extends React.Component {
 
     setInterval(()=>{
       console.log(this.state.artwork.stamps)
+        
+      superagent
+        .post("/artworks/" + this.state.artwork.id)
+        .send(this.state.artwork)
+        .end((err,res)=>{
+          console.log(err);
+          console.log("res");
+          console.log(res);
+        });
 
-    },10 * 1000); //10秒ごとに自動保存
+    },3 * 1000); //10秒ごとに自動保存
 
   }
-
 
   handleStampSelected(stamp_image_path){
     const new_stamp = Object.assign({},StampPrototype,{
       image:stamp_image_path
     });
-
     this.state.artwork.stamps = [...this.state.artwork.stamps, new_stamp];
-
     this.setState({
       artwork: this.state.artwork
     });
-    
   }
+
 
   render () {
     const artwork = window.data.artwork;
