@@ -1,0 +1,17 @@
+.stamp{
+  position:absolute;
+    top:0;
+    left:0;
+
+  width:10cm;
+  height:10cm;
+
+  transform-origin:top left;
+
+  //background:rgba(0,0,0,0.3);
+}
+
+
+.stamp__img{
+  width:100%;
+}

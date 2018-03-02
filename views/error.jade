@@ -1,6 +1,19 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .deviceScreen.--iPadAir2
+    .pageLayout
+      .pageLayout__topbar
+        include ./includes/topbar
+        +topbar()
+          table.n.topButtons
+            tr
+              td.topButtons__cell
+              td.topButtons__cell
+                a.moveButton(href="/")
+                  img(src="/images/button_next.png" alt="START")
+
+      .pageLayout__content
+        h1= message
+        h2= error.status
+        pre #{error.stack}

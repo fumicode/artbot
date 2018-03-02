@@ -14,23 +14,37 @@ export default class ArtworkPage extends React.Component {
   constructor(props){
     super();
     this.state = {
-      artwork:props.artwork
+      artwork:props.artwork,
+      zoom:false
     }
 
-    setInterval(()=>{
-      console.log(this.state.artwork.stamps)
+    this.zoomClicked = ()=>{
+      console.log("zoom Clicked");
+      this.setState({
+        zoom: !this.state.zoom
+      });
+    };
+  }
+
+  postArtwork(){
+    console.log("this.state.artwork");
+    console.log(this.state.artwork);
+    superagent
+      .post("/artworks/" + this.state.artwork.id)
+      .send(this.state.artwork)
+      .end((err,res)=>{
+        console.log("err");
+        console.log(err);
+
+        console.log("res.body.received");
+        console.log(res.body.received);
+
+      });
         
-      superagent
-        .post("/artworks/" + this.state.artwork.id)
-        .send(this.state.artwork)
-        .end((err,res)=>{
-          console.log(err);
-          console.log("res");
-          console.log(res);
-        });
+  }
 
-    },3 * 1000); //10秒ごとに自動保存
-
+  componentDidUpdate(){
+    this.postArtwork();
   }
 
   handleStampSelected(stamp_image_path){
@@ -42,6 +56,8 @@ export default class ArtworkPage extends React.Component {
       artwork: this.state.artwork
     });
   }
+
+  
 
 
   render () {
@@ -64,9 +80,9 @@ export default class ArtworkPage extends React.Component {
         .pageLayout__content
           .pageLayout__main
             .pageLayout__artBoard
-              TeePanel(artwork=artwork)
+              TeePanel(artwork=artwork zoom=this.state.zoom)
             .pageLayout__toolBox
-              ToolBox
+              ToolBox(zoomClicked=this.zoomClicked)
           .pageLayout__stampPool
             StampPool(stampGroups=stampGroups onStampSelected=${(stamp)=>this.handleStampSelected(stamp)})
     `;

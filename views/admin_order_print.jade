@@ -1,0 +1,16 @@
+extends layout
+
+block append body-end
+  script.
+    const data = window.data = {
+      artwork: !{ JSON.stringify(artwork) }
+    };
+    
+
+  script(src="/javascripts/bundle.js")
+
+
+block content
+  div(style="position:relative; width:30cm; height:40cm; ")
+    #PrintArtwork
+
