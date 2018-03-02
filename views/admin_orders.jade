@@ -33,8 +33,8 @@ block content
         td= order.ticket
         td= order.cust_name
         td
-          - const tee = order.items_sizes.tee;
-          - const tee_exist = tee.tee_36 || tee.tee_38 || tee.tee_40 || tee.tee_42 || tee.tee_44;
+          - var tee = order.items_sizes.tee;
+          - var tee_exist = tee.tee_36 || tee.tee_38 || tee.tee_40 || tee.tee_42 || tee.tee_44;
           p=  tee_exist  ? "" : "注文なし"
 
           table.n
