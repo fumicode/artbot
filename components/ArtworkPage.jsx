@@ -30,7 +30,6 @@ export default class ArtworkPage extends React.Component {
     };
 
     this.onStampClick = (e, stamp, index)=>{
-      alert("clicked");
     };
 
     this.onStampDragEnter = (e, stamp, index)=>{
