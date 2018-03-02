@@ -5,7 +5,6 @@ import StampPool from './StampPool.jsx';
 import TeePanel  from './TeePanel.jsx';
 import ToolBox   from './ToolBox.jsx';
 import {stampGroups} from '../models/Stamps.js';
-import {StampPrototype} from '../models/Artwork.js';
 
 import Vec2 from './lib/Vec2.js';
 import Angle from './lib/Angle.js';
@@ -122,12 +121,14 @@ export default class ArtworkPage extends React.Component {
   }
 
   handleStampSelected(stamp_image_path){
-    const new_stamp = Object.assign({},StampPrototype,{
+    const new_stamp = {
       image:stamp_image_path,
       transform:{
-        position:{x:10,y:10}
+        position:{x:10,y:10},
+        scale:{w:1,h:1},
+        rotate:0
       }
-    });
+    };
     this.state.artwork.stamps = [...this.state.artwork.stamps, new_stamp];
     this.setState({
       artwork: this.state.artwork

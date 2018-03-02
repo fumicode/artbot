@@ -84,6 +84,10 @@ export default class Artwork extends React.Component {
                 onDrag=${((e)=>this.props.onDrag(e, stamp,index, this.state ))}
                 onDragEnd=${((e)=>this.props.onDragEnd(e, stamp,index, this.state))}
 
+                onTouchStart=${((e)=>this.props.onDragEnter(e, stamp,index, this.state ))}
+                onTouchMove=${((e)=>this.props.onDrag(e, stamp,index, this.state ))}
+                onTouchEnd=${((e)=>this.props.onDragEnd(e, stamp,index, this.state))}
+
                 key=${index})
 
                 img.stump__img(src=${path.join("/images/stamps/600/",stamp.image)})

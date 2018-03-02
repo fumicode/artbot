@@ -24,11 +24,11 @@ block content
             table.n.topButtons
               tr
                 td.topButtons__cell
-                  a.button.moveButton.--back(href="#{path.join('/artworks', order.artwork.toString())}") 
+                  a.button.moveButton.--back(href="#{path.join('/artworks', order.artwork._id.toString())}") 
                     img(src="/images/button_back.png" alt="BACK")
                 td.topButtons__cell
                   button.moveButton.--next(type="submit") 
-                    img(src="/images/button_next.png" alt="CHECK")
+                    img(src="/images/button_check.png" alt="CHECK")
         .pageLayout__content
           .checkPage
             form
