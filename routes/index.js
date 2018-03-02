@@ -186,13 +186,26 @@ router.get('/admin/orders', function(req, res, next) {
   co(function*(){
     const query_order_state = req.query.state || "ordered";
     const orders = yield Order.find({order_state:query_order_state }).exec();
-    res.render('admin_orders', {orders});
+    res.render('admin_orders', {orders, state: query_order_state });
+
   }).catch(next);
 });
 
 
 router.get('/admin/orders/:order_id', function(req, res, next) {
   res.render('admin_order', { order:req.order, artwork:req.order.artwork });
+});
+
+
+router.post('/admin/orders/:order_id/state', function(req, res, next) {
+  co(function*(){
+    req.order.order_state = req.body.order_state;
+    const savedOrder = yield req.order.save();
+
+    //req.flash    ( savedOrder.ticket + " はお渡し完了しました" );
+    res.redirect ( "/admin/orders" );
+
+  }).catch(next);
 });
 
 

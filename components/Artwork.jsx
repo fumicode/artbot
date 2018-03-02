@@ -4,9 +4,9 @@ import path from 'path';
 import Stamp from './Stamp.jsx';
 
 export default class Artwork extends React.Component {
+
   constructor(props){
     super();
-
     this.state = {
       renderWidth:props.realWidth,
       renderHeight:props.realHeight,
@@ -14,7 +14,6 @@ export default class Artwork extends React.Component {
       scale_disp_real:1,
       scale_disp_cm:1
     };
-
   }
 
   changeSize(props){

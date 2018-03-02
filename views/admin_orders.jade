@@ -7,9 +7,15 @@ block body-end
 block content
   h1 注文管理画面
 
-  form(method="GET" action="#{url}")
-    button(type="submit" name="state" value="ordering") 作成中(注文予備群)
-    | | 
+  if state == "ordered"
+    h1 注文済み(印刷待ち)
+  else if state == "delivered"
+    h1 お渡し済み(ログ)
+  else if state == "trash"
+    h1 ゴミ箱(いらない)
+
+
+  form(method="GET" action="#{url}" style="text-align:right")
     button(type="submit" name="state" value="ordered") 注文済み(印刷待ち)
     | | 
     button(type="submit" name="state" value="delivered") お渡し済み(ログ)
@@ -18,7 +24,6 @@ block content
 
   table
     tr
-      td id
       td 整理券番号
       td お客様名
       td Tee サイズ / 数量
@@ -29,13 +34,13 @@ block content
 
     each order in orders
       tr
-        td
         td= order.ticket
         td= order.cust_name
         td
           - var tee = order.items_sizes.tee;
           - var tee_exist = tee.tee_36 || tee.tee_38 || tee.tee_40 || tee.tee_42 || tee.tee_44;
-          p=  tee_exist  ? "" : "注文なし"
+          if !tee_exist  
+            p 注文なし
 
           table.n
             if tee.tee_36
@@ -62,7 +67,9 @@ block content
         td
           - var sweat = order.items_sizes.sweat;
           - var sweat_exist = sweat.sweat_36 || sweat.sweat_40 || sweat.sweat_44;
-          p=  sweat_exist  ? "" : "注文なし"
+
+          if !sweat_exist  
+            p 注文なし
 
           table.n
             if sweat.sweat_36

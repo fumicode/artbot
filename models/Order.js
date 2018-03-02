@@ -36,4 +36,31 @@ const OrderSchema = new Schema({
   
 });
 
+OrderSchema.virtual("progressStr").get(function(){
+
+  let res = "";
+
+  switch(this.order_state){
+    case "ordering":
+      res = "ユーザー作成中"
+      break;
+
+    case "ordered":
+      res = "注文済み-印刷待ち"
+      break;
+
+    case "trash":
+      res = "ゴミ箱の中";
+      break;
+
+    case "delivered":
+      res =  "印刷済み"
+      break;
+  }
+
+
+  return res;
+})
+
+
 module.exports = OrderSchema;

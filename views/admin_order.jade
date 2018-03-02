@@ -16,22 +16,25 @@ block append body-end
 block content
   h1 注文 ##{order.ticket}
 
+  p
+    a(href="/admin/orders/?state=#{order.order_state}")  #{order.order_state}一覧へ戻る
+
   table
     tr
-      td id
       td 整理券番号
       td お客様名
       td Tee サイズ / 数量
       td Sweat サイズ / 数量
       td 日時
+      td 状態
     tr
-      td= order.id
       td= order.ticket
       td= order.cust_name
       td
         - const tee = order.items_sizes.tee;
         - const tee_exist = tee.tee_36 || tee.tee_38 || tee.tee_40 || tee.tee_42 || tee.tee_44;
-        p= tee_exist  ? "" : "注文なし"
+        if !tee_exist  
+          p 注文なし
 
         table.n
           if tee.tee_36
@@ -57,8 +60,8 @@ block content
       td
         - const sweat = order.items_sizes.sweat;
         - const sweat_exist = sweat.sweat_36 || sweat.sweat_40 || sweat.sweat_44;
-
-        pre=  (sweat_exist ? "sonzai" : "nai")
+        if !sweat_exist  
+          p 注文なし
 
         table.n
           if sweat.sweat_36
@@ -76,8 +79,28 @@ block content
               td Sweat 44
               td= sweat.sweat_44
       td= order.time
+      td= order.progressStr
 
-  div(style="position:relative; width:500px; height:500px; margin:0 auto")
+  div(style="position:relative; width:500px; height:700px; margin:0 auto")
     #ArtworkPreview
-    a.button(href="#{url}/print") 印刷ページへ
+    a.button(href="#{path.join(url,'print')}" target="_blank") 印刷ページへ
+
+  hr
+
+  if order.order_state != "delivered" 
+    form(action="#{path.join(url,'state')}" method="POST")
+      button(type="submit" name="order_state" value="delivered") 完了
+
+
+  if order.order_state != "ordered" 
+    form(action="#{path.join(url,'state')}" method="POST")
+      button(type="submit" name="order_state" value="ordered") 印刷待ちに戻す
+
+  hr
+
+  if order.order_state != "trash" 
+    form(action="#{path.join(url,'state')}" method="POST")
+      button(type="submit" name="order_state" value="trash") ゴミ箱に入れる
+
+    
 
