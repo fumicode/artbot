@@ -3,6 +3,7 @@
     top:0;
     left:0;
 
+
   width:10cm;
   height:10cm;
 
@@ -11,7 +12,78 @@
   //background:rgba(0,0,0,0.3);
 }
 
-
 .stamp__img{
   width:100%;
 }
+
+.stamp__boundBox{
+  border:dashed 2px #aaa;
+  position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.stamp__sizePoint{
+  position:absolute;
+
+  width:20px;
+  height:20px;
+  border-radius:10px;
+  background:white;
+  border:2px solid #000;
+
+  margin:-10px;
+  
+  &.--tl{
+    top:0;
+    left:0;
+  }
+
+  &.--tr{
+    top:0;
+    right:0;
+  }
+
+  &.--bl{
+    bottom:0;
+    left:0;
+  }
+
+  &.--br{
+    bottom:0;
+    right:0;
+  }
+
+} 
+
+
+.stamp__rotateBar{
+  position:absolute;
+    bottom:-30px;
+    left:50%;
+
+  width:0;
+  height:30px;
+
+  border:1px solid #aaa;
+
+}
+
+.stamp__rotatePoint{
+  position:absolute;
+
+    bottom:-30px;
+    left:50%;
+
+  width:20px;
+  height:20px;
+  border-radius:10px;
+  background:white;
+  border:2px solid #000;
+
+  margin:-10px;
+
+}
+

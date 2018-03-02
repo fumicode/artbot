@@ -1,6 +1,8 @@
 import React from 'react';
 import path from 'path';
 
+import Stamp from './Stamp.jsx';
+
 export default class Artwork extends React.Component {
   constructor(props){
     super();
@@ -74,23 +76,21 @@ export default class Artwork extends React.Component {
           ref="printArea")
           .artwork__inner
             each stamp,index in this.props.artwork.stamps
-              .stamp(style={
-                top: stamp.transform.position.y * scale_disp_cm  ,
-                left:stamp.transform.position.x * scale_disp_cm  ,
-                transform:"scale("+scale_disp_real+","+scale_disp_real+")"} 
 
-                onClick=${((e)=>this.props.onClick(e, stamp,index, this.state))}
-                onDragEnter=${((e)=>this.props.onDragEnter(e, stamp,index, this.state ))}
-                onDrag=${((e)=>this.props.onDrag(e, stamp,index, this.state ))}
-                onDragEnd=${((e)=>this.props.onDragEnd(e, stamp,index, this.state))}
+              Stamp(key=${index}
+                scale_disp_cm=${scale_disp_cm}
+                scale_disp_real=${scale_disp_real}
+                x=${stamp.transform.position.x}
+                y=${stamp.transform.position.y}
+                stamp=${stamp} index=${index}
+                artworkState = ${this.state}
+                selected=${this.props.selectedStampIndex == index }
 
-                onTouchStart=${((e)=>this.props.onDragEnter(e, stamp,index, this.state ))}
-                onTouchMove=${((e)=>this.props.onDrag(e, stamp,index, this.state ))}
-                onTouchEnd=${((e)=>this.props.onDragEnd(e, stamp,index, this.state))}
+                onClick     = ${this.props.onClick    }
+                onDragEnter = ${this.props.onDragEnter}
+                onDrag      = ${this.props.onDrag     }
+                onDragEnd   = ${this.props.onDragEnd  } )
 
-                key=${index})
-
-                img.stump__img(src=${path.join("/images/stamps/600/",stamp.image)})
     `;
   }
 }

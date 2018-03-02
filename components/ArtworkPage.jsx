@@ -18,7 +18,9 @@ export default class ArtworkPage extends React.Component {
       artwork:props.artwork,
       zoom:false,
 
-      selectedStampIndex:-1
+      selectedStampIndex:-1,
+
+      logs:["first log", "second log", "hoge"]
     }
 
     this.zoomClicked = ()=>{
@@ -28,19 +30,35 @@ export default class ArtworkPage extends React.Component {
       });
     };
 
+
     this.onStampClick = (e, stamp, index)=>{
+      ////いらない・・・？
+      this.log("clicked");
     };
 
     this.onStampDragEnter = (e, stamp, index)=>{
-      const dragStartPoint = new Vec2(e.pageX, e.pageY);
+      this.log("start")
+      
+      const mainTouch =   e.touches[0];
+      const pageX = mainTouch ? mainTouch.pageX : e.pageX;
+      const pageY = mainTouch ? mainTouch.pageY : e.pageY;
+      const dragStartPoint = new Vec2(pageX, pageY);
+
+
+      this.setState({
+        selectedStampIndex:index
+      });
 
       this.dragInfo = {
-        selectedStampIndex: index,
         dragStartPoint
       };
     }
 
     this.onStampDrag = (e, stamp, index, artworkState)=>{
+      const mainTouch =   e.touches[0];
+      const pageX = mainTouch ? mainTouch.pageX : e.pageX;
+      const pageY = mainTouch ? mainTouch.pageY : e.pageY;
+
       
       const scale_cm_disp = 1/artworkState.scale_disp_cm;
 
@@ -49,7 +67,7 @@ export default class ArtworkPage extends React.Component {
         console.log("dragInfoがありません");
         return ;
       }
-      if(this.dragInfo.selectedStampIndex == -1){
+      if(this.state.selectedStampIndex == -1){
         return ;
       }
 
@@ -58,26 +76,18 @@ export default class ArtworkPage extends React.Component {
         return ;
       }
 
-        
-
-
-      const draggingPoint = new Vec2( e.pageX, e.pageY)
+      const draggingPoint = new Vec2( pageX, pageY)
 
       if(draggingPoint.getLength() == 0){
         console.log("なぜかpageXが0になる現象");
         return ;
       }
-
-
-
       
       const moveVec = draggingPoint.getSub(this.dragInfo.dragStartPoint);
       const actualMoveVec = moveVec.getMul(scale_cm_disp )
 
-      console.log(this.dragInfo.selectedStampIndex);
       const artwork = this.state.artwork;
-      const selectedStamp = artwork.stamps[this.dragInfo.selectedStampIndex];
-
+      const selectedStamp = artwork.stamps[this.state.selectedStampIndex];
 
       const curPos = selectedStamp.transform.position;
 
@@ -85,22 +95,36 @@ export default class ArtworkPage extends React.Component {
 
       selectedStamp.transform.position = newPos;
       
-      this.dragInfo = Object.assign(this.dragInfo, {
+      this.dragInfo = {
         dragStartPoint:draggingPoint,
+      };
+      
+      this.setState({
+        artwork
       });
     }
 
     this.onStampDragEnd= (e, stamp, index)=>{
       console.log("drag end");
+
       this.setState({
-
+        //とくになし
       });
 
-      this.dragInfo = Object.assign(this.dragInfo, {
+      this.dragInfo =  {
         dragStartPoint:null,
-        selectedStampIndex: -1,
-      });
+      };
     }
+
+  }
+
+  log(str){
+    
+    this.state.logs.unshift(str);
+
+    this.setState({
+      logs: this.state.logs.slice(0,10)
+    });
 
   }
 
@@ -117,7 +141,7 @@ export default class ArtworkPage extends React.Component {
   }
 
   componentDidUpdate(){
-    this.postArtwork();
+    //this.postArtwork();
   }
 
   handleStampSelected(stamp_image_path){
@@ -154,8 +178,15 @@ export default class ArtworkPage extends React.Component {
                         img(src="/images/button_done.png" alt="DONE")
         .pageLayout__content
           .pageLayout__main
+          
+            .logs(style={position:"relative", zIndex:100, width:"200px"})
+              each log,index in this.state.logs
+                pre(key=${index}) ${log} 
+                
+
             .pageLayout__artBoard
               TeePanel(artwork=artwork zoom=this.state.zoom 
+                selectedStampIndex=this.state.selectedStampIndex
                 onClick=${(e,s,i,a)=>this.onStampClick(e,s,i,a)}
                 onDragEnter=${(e,s,i,a)=>this.onStampDragEnter(e,s,i,a)}
                 onDrag=${(e,s,i,a)=>this.onStampDrag(e,s,i,a)}

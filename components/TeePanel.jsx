@@ -37,13 +37,14 @@ export default class TeePanel extends React.Component {
           .teePanel__teeImage(style={backgroundImage:"url(/images/"+bgImg+".png)"})
           div(style={position:"absolute", top:(y || 140)+ "px", left:(x || 140)+"px"})
             Artwork(artwork=this.props.artwork 
-            realWidth="30cm" realHeight="40cm" 
-            displayWidth=(w || 260) noBorder=noBorder 
+              selectedStampIndex=this.props.selectedStampIndex
+              realWidth="30cm" realHeight="40cm" 
+              displayWidth=(w || 260) noBorder=noBorder 
 
-            onClick=${this.props.onClick}
-            onDragEnter=${this.props.onDragEnter}
-            onDrag=${this.props.onDrag}
-            onDragEnd=${this.props.onDragEnd} )
+              onClick=${this.props.onClick}
+              onDragEnter=${this.props.onDragEnter}
+              onDrag=${this.props.onDrag}
+              onDragEnd=${this.props.onDragEnd} )
       `;
       
     }

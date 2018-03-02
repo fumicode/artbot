@@ -18,7 +18,39 @@ router.get('/', function(req, res, next) {
 router.post('/artworks', function(req, res, next) { 
   //とりあえず簡易的に
   co(function*(){
-    const newArtwork = new Artwork({ });
+    const newArtwork = new Artwork({
+      stamps:[
+        {
+          image: "animal/galloping_horse.png", 
+          transform:{
+            position:{
+              x:0, //cm
+              y:10
+            },
+            scale:{
+              w:1,
+              h:1
+            },
+            rotate:0
+          }
+        },
+        {
+          image: "sign/smc_blocktype_black.png", 
+          transform:{
+            position:{
+              x:10, //cm
+              y:0
+            },
+            scale:{
+              w:1,
+              h:1
+            },
+            rotate:0
+          }
+        },
+      ]
+    });
+
     const savedArtwork = yield newArtwork.save();
 
     res.redirect(path.join("artworks",savedArtwork._id.toString()));

@@ -1082,4 +1082,60 @@ a {
 .stamp__img {
   width: 100%; }
 
+/* line 19, scss/_stamp.scss */
+.stamp__boundBox {
+  border: dashed 2px #aaa;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+/* line 28, scss/_stamp.scss */
+.stamp__sizePoint {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: white;
+  border: 2px solid #000;
+  margin: -10px; }
+  /* line 39, scss/_stamp.scss */
+  .stamp__sizePoint.--tl {
+    top: 0;
+    left: 0; }
+  /* line 44, scss/_stamp.scss */
+  .stamp__sizePoint.--tr {
+    top: 0;
+    right: 0; }
+  /* line 49, scss/_stamp.scss */
+  .stamp__sizePoint.--bl {
+    bottom: 0;
+    left: 0; }
+  /* line 54, scss/_stamp.scss */
+  .stamp__sizePoint.--br {
+    bottom: 0;
+    right: 0; }
+
+/* line 62, scss/_stamp.scss */
+.stamp__rotateBar {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  width: 0;
+  height: 30px;
+  border: 1px solid #aaa; }
+
+/* line 74, scss/_stamp.scss */
+.stamp__rotatePoint {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: white;
+  border: 2px solid #000;
+  margin: -10px; }
+
 /*# sourceMappingURL=style.css.map */
