@@ -20,7 +20,8 @@ export default class ArtworkPage extends React.Component {
 
       selectedStampIndex:-1,
 
-      logs:["first log", "second log", "hoge"]
+      logs:["first log", "second log", "hoge"],
+      upload:false //trueのときは、サーバーに保存する
     }
 
     this.zoomClicked = ()=>{
@@ -109,6 +110,7 @@ export default class ArtworkPage extends React.Component {
 
       this.setState({
         //とくになし
+        upload:true
       });
 
       this.dragInfo =  {
@@ -141,7 +143,10 @@ export default class ArtworkPage extends React.Component {
   }
 
   componentDidUpdate(){
-    //this.postArtwork();
+    if(this.state.upload){
+      this.postArtwork();
+      this.setState({upload:false});
+    }
   }
 
   handleStampSelected(stamp_image_path){
@@ -155,7 +160,8 @@ export default class ArtworkPage extends React.Component {
     };
     this.state.artwork.stamps = [...this.state.artwork.stamps, new_stamp];
     this.setState({
-      artwork: this.state.artwork
+      artwork: this.state.artwork,
+      upload:true
     });
   }
 
