@@ -1,46 +1,37 @@
-const StampPrototype = {
-  image: "animal/galloping_horse.png",
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const co = require('co');
+
+/*
+性別その他
+radioを追加
+姓、名、ふりがな
+出身（県or国）
+学籍番号（電通大生の場合）
+*/
+
+
+const StampSchema = new Schema({
+  image: String,
   transform:{
     position:{
-      x:10, //cm
-      y:0
+      x:Number, //cm
+      y:Number
     },
     scale:{
-      w:1,
-      h:1
+      w:Number,
+      h:Number
     },
-    rotate:0
+    rotate:Number
   }
-}
+});
 
-const StampPrototype2 = {
-  image: "sign/smc_blocktype_black.png",
+const OrderSchema = new Schema({
+  //id:0,
+  stamps:[ StampSchema ]
+});
 
-  transform:{
-    position:{
-      x:0, //cm
-      y:10
-    },
-    scale:{
-      w:1,
-      h:1
-    },
-    rotate:0
-  }
-
-}
+module.exports = OrderSchema;
 
 
-const ArtworkPrototype ={
-  id:0,
 
-  stamps:[
-    StampPrototype,
-    StampPrototype2,
-  ]
-}
-
-const Artworks = [
-];
-
-module.exports = {StampPrototype, ArtworkPrototype, Artworks};

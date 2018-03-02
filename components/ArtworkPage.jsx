@@ -107,7 +107,7 @@ export default class ArtworkPage extends React.Component {
 
   postArtwork(){
     superagent
-      .post("/artworks/" + this.state.artwork.id)
+      .post("/artworks/" + this.state.artwork._id)
       .send(this.state.artwork)
       .end((err,res)=>{
         if(err){
@@ -147,7 +147,7 @@ export default class ArtworkPage extends React.Component {
                       img(src="/images/button_back.png" alt="BACK")
                   td.topButtons__cell
                     form(method="POST" action="/orders" style={display:"inline-block"})
-                      input(type="hidden" name="artwork_id" value=${artwork.id})
+                      input(type="hidden" name="artwork_id" value=${artwork._id})
                       button.moveButton.--next(type="submit") 
                         img(src="/images/button_done.png" alt="DONE")
         .pageLayout__content

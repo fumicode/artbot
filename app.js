@@ -6,6 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
+var db = require("./models/db-settings");
+db.db_loaded_promise.then((message)=>{
+  console.log("db loaded promise message ");
+  console.log(message);
+});
+
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');

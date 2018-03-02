@@ -53,19 +53,19 @@ block content
                       tr
                         td
                           input(type="number" name="tee_size_36" 
-                            value="#{order.items_sizes.tee.tee_36}")
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_36 || 0}")
                         td
                           input(type="number" name="tee_size_38" 
-                            value="#{order.items_sizes.tee.tee_38}")
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_38 || 0}")
                         td
                           input(type="number" name="tee_size_40" 
-                            value="#{order.items_sizes.tee.tee_40}")
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_40 || 0}")
                         td
                           input(type="number" name="tee_size_42" 
-                            value="#{order.items_sizes.tee.tee_42}")
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_42 || 0}")
                         td
                           input(type="number" name="tee_size_44" 
-                            value="#{order.items_sizes.tee.tee_44}")
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_44 || 0}")
                   td
                     table.n
                       tr
@@ -75,13 +75,13 @@ block content
                       tr
                         td
                           input(type="number" name="sweat_size_36"
-                            value="#{order.items_sizes.sweat.sweat_36}")
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_36 || 0}")
                         td
                           input(type="number" name="sweat_size_40"
-                            value="#{order.items_sizes.sweat.sweat_40}")
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_40 || 0}")
                         td
                           input(type="number" name="sweat_size_44"
-                            value="#{order.items_sizes.sweat.sweat_44}")
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_44 || 0}")
 
               hr.space 
 
