@@ -7,6 +7,8 @@ import ToolBox   from './ToolBox.jsx';
 import {stampGroups} from '../models/Stamps.js';
 import {StampPrototype} from '../models/Artwork.js';
 
+import Vec2 from './lib/Vec2.js';
+import Angle from './lib/Angle.js';
 import superagent from 'superagent';
 
 
@@ -15,7 +17,9 @@ export default class ArtworkPage extends React.Component {
     super();
     this.state = {
       artwork:props.artwork,
-      zoom:false
+      zoom:false,
+
+      selectedStampIndex:-1
     }
 
     this.zoomClicked = ()=>{
@@ -24,41 +28,111 @@ export default class ArtworkPage extends React.Component {
         zoom: !this.state.zoom
       });
     };
+
+    this.onStampClick = (e, stamp, index)=>{
+      alert("clicked");
+    };
+
+    this.onStampDragEnter = (e, stamp, index)=>{
+      const dragStartPoint = new Vec2(e.pageX, e.pageY);
+
+      this.dragInfo = {
+        selectedStampIndex: index,
+        dragStartPoint
+      };
+    }
+
+    this.onStampDrag = (e, stamp, index, artworkState)=>{
+      
+      const scale_cm_disp = 1/artworkState.scale_disp_cm;
+
+      if(!this.dragInfo){
+
+        console.log("dragInfoがありません");
+        return ;
+      }
+      if(this.dragInfo.selectedStampIndex == -1){
+        return ;
+      }
+
+      if(!this.dragInfo.dragStartPoint){
+        console.log("drag がスタートしていません");
+        return ;
+      }
+
+        
+
+
+      const draggingPoint = new Vec2( e.pageX, e.pageY)
+
+      if(draggingPoint.getLength() == 0){
+        console.log("なぜかpageXが0になる現象");
+        return ;
+      }
+
+
+
+      
+      const moveVec = draggingPoint.getSub(this.dragInfo.dragStartPoint);
+      const actualMoveVec = moveVec.getMul(scale_cm_disp )
+
+      console.log(this.dragInfo.selectedStampIndex);
+      const artwork = this.state.artwork;
+      const selectedStamp = artwork.stamps[this.dragInfo.selectedStampIndex];
+
+
+      const curPos = selectedStamp.transform.position;
+
+      const newPos = new Vec2(curPos.x, curPos.y).add(actualMoveVec);
+
+      selectedStamp.transform.position = newPos;
+      
+      this.dragInfo = Object.assign(this.dragInfo, {
+        dragStartPoint:draggingPoint,
+      });
+    }
+
+    this.onStampDragEnd= (e, stamp, index)=>{
+      console.log("drag end");
+      this.setState({
+
+      });
+
+      this.dragInfo = Object.assign(this.dragInfo, {
+        dragStartPoint:null,
+        selectedStampIndex: -1,
+      });
+    }
+
   }
 
   postArtwork(){
-    console.log("this.state.artwork");
-    console.log(this.state.artwork);
     superagent
       .post("/artworks/" + this.state.artwork.id)
       .send(this.state.artwork)
       .end((err,res)=>{
-        console.log("err");
-        console.log(err);
-
-        console.log("res.body.received");
-        console.log(res.body.received);
-
+        if(err){
+          return console.log("err");
+        }
       });
-        
   }
 
   componentDidUpdate(){
-    this.postArtwork();
+    //this.postArtwork();
   }
 
   handleStampSelected(stamp_image_path){
     const new_stamp = Object.assign({},StampPrototype,{
-      image:stamp_image_path
+      image:stamp_image_path,
+      transform:{
+        position:{x:10,y:10}
+      }
     });
     this.state.artwork.stamps = [...this.state.artwork.stamps, new_stamp];
     this.setState({
       artwork: this.state.artwork
     });
   }
-
-  
-
 
   render () {
     const artwork = window.data.artwork;
@@ -80,11 +154,16 @@ export default class ArtworkPage extends React.Component {
         .pageLayout__content
           .pageLayout__main
             .pageLayout__artBoard
-              TeePanel(artwork=artwork zoom=this.state.zoom)
+              TeePanel(artwork=artwork zoom=this.state.zoom 
+                onClick=${(e,s,i,a)=>this.onStampClick(e,s,i,a)}
+                onDragEnter=${(e,s,i,a)=>this.onStampDragEnter(e,s,i,a)}
+                onDrag=${(e,s,i,a)=>this.onStampDrag(e,s,i,a)}
+                onDragEnd=${(e,s,i,a)=>this.onStampDragEnd(e,s,i,a)})
             .pageLayout__toolBox
               ToolBox(zoomClicked=this.zoomClicked)
           .pageLayout__stampPool
-            StampPool(stampGroups=stampGroups onStampSelected=${(stamp)=>this.handleStampSelected(stamp)})
+            StampPool(stampGroups=stampGroups
+              onStampSelected=${(stamp)=>this.handleStampSelected(stamp)})
     `;
   }
 }
