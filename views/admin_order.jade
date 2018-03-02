@@ -1,49 +1,83 @@
 extends layout
 
+
+
+block append body-end
+  script.
+    const data = window.data = {
+      order: !{ JSON.stringify(order) },
+      artwork: !{ JSON.stringify(artwork) }
+    };
+    
+
+  script(src="/javascripts/bundle.js")
+
+
 block content
   h1 注文 ##{order.ticket}
 
   table
     tr
+      td id
       td 整理券番号
       td お客様名
       td Tee サイズ / 数量
       td Sweat サイズ / 数量
       td 日時
     tr
+      td= order.id
       td= order.ticket
       td= order.cust_name
       td
-        table.n
-          tr
-            td Tee 36
-            td= order.items_sizes.tee.tee_36
-          tr
-            td Tee 38
-            td= order.items_sizes.tee.tee_38
-          tr
-            td Tee 40
-            td= order.items_sizes.tee.tee_40
-          tr
-            td Tee 42
-            td= order.items_sizes.tee.tee_42
-          tr
-            td Tee 44
-            td= order.items_sizes.tee.tee_44
+        - const tee = order.items_sizes.tee;
+        - const tee_exist = tee.tee_36 || tee.tee_38 || tee.tee_40 || tee.tee_42 || tee.tee_44;
+        p= tee_exist  ? "" : "注文なし"
 
-      td
         table.n
-          tr
-            td Sweat 36
-            td= order.items_sizes.sweat.sweat_36
-          tr
-            td Sweat 40
-            td= order.items_sizes.sweat.sweat_40
-          tr
-            td Sweat 44
-            td= order.items_sizes.sweat.sweat_44
+          if tee.tee_36
+            tr
+              td Tee 36
+              td= tee.tee_36
+          if tee.tee_38
+            tr
+              td Tee 38
+              td= tee.tee_38
+          if tee.tee_40
+            tr
+              td Tee 40
+              td= tee.tee_40
+          if tee.tee_42
+            tr
+              td Tee 42
+              td= tee.tee_42
+          if tee.tee_44
+            tr
+              td Tee 44
+              td= tee.tee_44
+      td
+        - const sweat = order.items_sizes.sweat;
+        - const sweat_exist = sweat.sweat_36 || sweat.sweat_40 || sweat.sweat_44;
+
+        pre=  (sweat_exist ? "sonzai" : "nai")
+
+        table.n
+          if sweat.sweat_36
+            tr
+              td Sweat 36
+              td= sweat.sweat_36
+
+          if sweat.sweat_40
+            tr
+              td Sweat 40
+              td= sweat.sweat_40
+
+          if sweat.sweat_44
+            tr
+              td Sweat 44
+              td= sweat.sweat_44
       td= order.time
 
-
-            
+  div(style="position:relative; width:500px; height:500px; margin:0 auto")
+    #ArtworkPreview
+    a.button(href="#{url}/print") 印刷ページへ
 

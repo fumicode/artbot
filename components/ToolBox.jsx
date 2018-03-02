@@ -5,6 +5,8 @@ export default class TeePanel extends React.Component {
     super();
   }
 
+
+
   render () {
     return pug`
       .toolBox
@@ -20,7 +22,7 @@ export default class TeePanel extends React.Component {
               img(src="/images/icon_down.png")
           li.toolBox__margin
           li.toolBox__tool
-            button.toolBox__button#tool_zoom
+            button.toolBox__button#tool_zoom(onClick=this.props.zoomClicked)
               img(src="/images/icon_zoom.png")
     `;
   }

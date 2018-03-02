@@ -1,8 +1,14 @@
 const StampPrototype = {
   image: "animal/galloping_horse.png",
   transform:{
-    position:["10%","13%"],
-    scale:[1,1],
+    position:{
+      x:10, //cm
+      y:0
+    },
+    scale:{
+      w:1,
+      h:1
+    },
     rotate:0
   }
 }
@@ -11,8 +17,14 @@ const StampPrototype2 = {
   image: "sign/smc_blocktype_black.png",
 
   transform:{
-    position:["40%","15%"],
-    scale:[1,1],
+    position:{
+      x:0, //cm
+      y:10
+    },
+    scale:{
+      w:1,
+      h:1
+    },
     rotate:0
   }
 
@@ -29,8 +41,6 @@ const ArtworkPrototype ={
 }
 
 const Artworks = [
-  ArtworkPrototype ,
-  ArtworkPrototype ,
 ];
 
 module.exports = {StampPrototype, ArtworkPrototype, Artworks};

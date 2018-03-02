@@ -2,68 +2,90 @@ extends layout
 
 block head-end
 
+block body-end
+    
 block content
   h1 注文管理画面
 
   form(method="GET" action="#{url}")
-
     button(type="submit" name="state" value="ordering") 作成中(注文予備群)
     | | 
-
     button(type="submit" name="state" value="ordered") 注文済み(印刷待ち)
     | | 
-
     button(type="submit" name="state" value="delivered") お渡し済み(ログ)
     | | 
-
     button(type="submit" name="state" value="trash") ゴミ箱(いらない)
-
 
   table
     tr
+      td id
       td 整理券番号
       td お客様名
       td Tee サイズ / 数量
       td Sweat サイズ / 数量
       td 日時
+      td デザイン
       td アクション
+
     each order in orders
       tr
+        td= order.id
         td= order.ticket
         td= order.cust_name
         td
+          - const tee = order.items_sizes.tee;
+          - const tee_exist = tee.tee_36 || tee.tee_38 || tee.tee_40 || tee.tee_42 || tee.tee_44;
+          p=  tee_exist  ? "" : "注文なし"
+
           table.n
-            tr
-              td Tee 36
-              td= order.items_sizes.tee.tee_36
-            tr
-              td Tee 38
-              td= order.items_sizes.tee.tee_38
-            tr
-              td Tee 40
-              td= order.items_sizes.tee.tee_40
-            tr
-              td Tee 42
-              td= order.items_sizes.tee.tee_42
-            tr
-              td Tee 44
-              td= order.items_sizes.tee.tee_44
+            if tee.tee_36
+              tr
+                td Tee 36
+                td= tee.tee_36
+            if tee.tee_38
+              tr
+                td Tee 38
+                td= tee.tee_38
+            if tee.tee_40
+              tr
+                td Tee 40
+                td= tee.tee_40
+            if tee.tee_42
+              tr
+                td Tee 42
+                td= tee.tee_42
+            if tee.tee_44
+              tr
+                td Tee 44
+                td= tee.tee_44
 
         td
+          - const sweat = order.items_sizes.sweat;
+          - const sweat_exist = sweat.sweat_36 || sweat.sweat_40 || sweat.sweat_44;
+          p=  sweat_exist  ? "" : "注文なし"
+
           table.n
-            tr
-              td Sweat 36
-              td= order.items_sizes.sweat.sweat_36
-            tr
-              td Sweat 40
-              td= order.items_sizes.sweat.sweat_40
-            tr
-              td Sweat 44
-              td= order.items_sizes.sweat.sweat_44
+            if sweat.sweat_36
+              tr
+                td Sweat 36
+                td= sweat.sweat_36
+
+            if sweat.sweat_40
+              tr
+                td Sweat 40
+                td= sweat.sweat_40
+
+            if sweat.sweat_44
+              tr
+                td Sweat 44
+                td= sweat.sweat_44
+
         td= order.time
         td
+          #ArtworkTee
+        td
           div
-            a.button(href="#{path.join(baseUrl,'orders',order.id.toString())}") 見る
+            a.button(href="#{path.join('/admin/orders',order.id.toString())}") 見る
 
 
             
