@@ -60,8 +60,8 @@ block content
                 td= tee.tee_44
 
         td
-          - const sweat = order.items_sizes.sweat;
-          - const sweat_exist = sweat.sweat_36 || sweat.sweat_40 || sweat.sweat_44;
+          - var sweat = order.items_sizes.sweat;
+          - var sweat_exist = sweat.sweat_36 || sweat.sweat_40 || sweat.sweat_44;
           p=  sweat_exist  ? "" : "注文なし"
 
           table.n
