@@ -14,8 +14,6 @@ router.get('/', function(req, res, next) {
   res.render('start', {});
 });
 
-
-
 //つくるだけ。なんにもパラメータいらない
 router.post('/artworks', function(req, res, next) { 
   //とりあえず簡易的に

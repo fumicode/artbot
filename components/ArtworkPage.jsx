@@ -113,11 +113,12 @@ export default class ArtworkPage extends React.Component {
         if(err){
           return console.log("err");
         }
+        console.log("saved");
       });
   }
 
   componentDidUpdate(){
-    //this.postArtwork();
+    this.postArtwork();
   }
 
   handleStampSelected(stamp_image_path){

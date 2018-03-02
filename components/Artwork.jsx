@@ -29,7 +29,7 @@ export default class Artwork extends React.Component {
         renderHeight:props.realHeight,
         scale_px_cm,
         scale_disp_real:1,
-        scale_disp_cm:1
+        scale_disp_cm: 1 * scale_px_cm
       });
       return ;
     }
