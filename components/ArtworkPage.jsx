@@ -20,7 +20,7 @@ export default class ArtworkPage extends React.Component {
 
       selectedStampIndex:-1,
 
-      logs:["first log", "second log", "hoge"],
+      logs:["first log", "second log", "hoge" ,"yey"],
       upload:false //trueのときは、サーバーに保存する
     }
 
@@ -202,9 +202,6 @@ export default class ArtworkPage extends React.Component {
                         img(src="/images/button_done.png" alt="DONE")
         .pageLayout__content
           .pageLayout__main
-          
-                
-
             .pageLayout__artBoard(onClick=this.teePanelClicked)
               TeePanel(artwork=artwork zoom=this.state.zoom 
                 selectedStampIndex=this.state.selectedStampIndex
@@ -226,6 +223,7 @@ export default class ArtworkPage extends React.Component {
         each log,index in this.state.logs
           pre(key=${index}) ${log} 
     */
+
   }
 }
 
