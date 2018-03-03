@@ -9,6 +9,7 @@ const stampGroups = {
     "pencil_cat_1.png",
     "shark.png",
     "unicorns.png",
+    "spring14_polar_bear_cutout_print.png"
   ],
   "botanical":[
     "botanical_border.png",
@@ -39,7 +40,6 @@ const stampGroups = {
     "autumn17_ufo_print.png",
     "ice_cream_love_2.png",
     "dice.png",
-    "ss17_ice_cream_print_col_a_28jul16.png",
     "heart_black.png",
     "star_black.png",
     "heart_hot_pink.png",

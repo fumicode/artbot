@@ -111,18 +111,16 @@ export default class ArtworkPage extends React.Component {
       const selectedStamp = artwork.stamps[this.state.selectedStampIndex];
 
       const curPos = selectedStamp.transform.position;
-
       const newPos = new Vec2(curPos.x, curPos.y).add(actualMoveVec);
 
       selectedStamp.transform.position = newPos;
-      
       this.dragInfo = {
         dragStartPoint:draggingPoint,
       };
-      
       this.setState({
         artwork
       });
+
     }
 
     this.onStampDragEnd= (e, stamp, index)=>{
@@ -205,9 +203,6 @@ export default class ArtworkPage extends React.Component {
         .pageLayout__content
           .pageLayout__main
           
-            .logs(style={position:"relative", zIndex:100, width:"200px"})
-              each log,index in this.state.logs
-                pre(key=${index}) ${log} 
                 
 
             .pageLayout__artBoard(onClick=this.teePanelClicked)
@@ -225,6 +220,12 @@ export default class ArtworkPage extends React.Component {
             StampPool(stampGroups=stampGroups
               onStampSelected=${(stamp)=>this.handleStampSelected(stamp)})
     `;
+
+    /*
+      .logs(style={position:"relative", zIndex:100, width:"200px"})
+        each log,index in this.state.logs
+          pre(key=${index}) ${log} 
+    */
   }
 }
 
