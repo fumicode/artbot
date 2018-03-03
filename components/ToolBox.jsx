@@ -13,7 +13,7 @@ export default class TeePanel extends React.Component {
         ul.toolBox__list
           li.toolBox__tool
             button.toolBox__button#tool_trash 
-              img(src="/images/icon_trash.png")
+              img(src="/images/icon_trash.png" onClick=this.props.trashClicked)
           li.toolBox__tool
             button.toolBox__button#tool_layer_up 
               img(src="/images/icon_up.png")

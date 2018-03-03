@@ -64,7 +64,6 @@ export default class Artwork extends React.Component {
     const scale_px_cm     = this.state.scale_px_cm;
     const scale_disp_cm   = this.state.scale_disp_cm;
 
-    console.log(scale_disp_cm)
 
     return pug`
       .artwork(onTouchMove=${(e)=>e.preventDefault()})

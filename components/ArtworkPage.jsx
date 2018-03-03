@@ -24,10 +24,30 @@ export default class ArtworkPage extends React.Component {
       upload:false //trueのときは、サーバーに保存する
     }
 
+    this.teePanelClicked = ()=>{
+      this.setState({
+        selectedStampIndex:-1,
+      });
+    }
+
     this.zoomClicked = ()=>{
       console.log("zoom Clicked");
       this.setState({
         zoom: !this.state.zoom
+      });
+    };
+
+    this.trashClicked = ()=>{
+      console.log("trash Clicked");
+
+      if(this.state.selectedStampIndex == -1){
+        return ; //do nothing
+      }
+
+      this.state.artwork.stamps.splice(this.state.selectedStampIndex, 1);
+
+      this.setState({
+        artwork: this.state.artwork
       });
     };
 
@@ -190,7 +210,7 @@ export default class ArtworkPage extends React.Component {
                 pre(key=${index}) ${log} 
                 
 
-            .pageLayout__artBoard
+            .pageLayout__artBoard(onClick=this.teePanelClicked)
               TeePanel(artwork=artwork zoom=this.state.zoom 
                 selectedStampIndex=this.state.selectedStampIndex
                 onClick=${(e,s,i,a)=>this.onStampClick(e,s,i,a)}
@@ -198,7 +218,9 @@ export default class ArtworkPage extends React.Component {
                 onDrag=${(e,s,i,a)=>this.onStampDrag(e,s,i,a)}
                 onDragEnd=${(e,s,i,a)=>this.onStampDragEnd(e,s,i,a)})
             .pageLayout__toolBox
-              ToolBox(zoomClicked=this.zoomClicked)
+              ToolBox(
+                zoomClicked =this.zoomClicked
+                trashClicked=this.trashClicked)
           .pageLayout__stampPool
             StampPool(stampGroups=stampGroups
               onStampSelected=${(stamp)=>this.handleStampSelected(stamp)})
