@@ -24,12 +24,12 @@ router.post('/artworks', function(req, res, next) {
           image: "animal/galloping_horse.png", 
           transform:{
             position:{
-              x:0, //cm
-              y:10
+              x:10, //cm
+              y:25
             },
-            scale:{
-              w:1,
-              h:1
+            scale:{ //10cm が基本
+              w:2,
+              h:2
             },
             rotate:0
           }
@@ -38,12 +38,26 @@ router.post('/artworks', function(req, res, next) {
           image: "sign/smc_blocktype_black.png", 
           transform:{
             position:{
-              x:10, //cm
-              y:0
+              x:15, //cm
+              y:6
             },
             scale:{
-              w:1,
-              h:1
+              w:2.3,
+              h:2.3
+            },
+            rotate:0
+          }
+        },
+        {
+          image: "animal/tiger.png", 
+          transform:{
+            position:{
+              x:20, //cm
+              y:25
+            },
+            scale:{
+              w:2.5,
+              h:2.5
             },
             rotate:0
           }
