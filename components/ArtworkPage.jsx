@@ -4,6 +4,7 @@ import Topbar    from './Topbar.jsx';
 import StampPool from './StampPool.jsx';
 import TeePanel  from './TeePanel.jsx';
 import ToolBox   from './ToolBox.jsx';
+import LayerPanel from './LayerPanel.jsx';
 import {stampGroups} from '../models/Stamps.js';
 
 import Vec2 from './lib/Vec2.js';
@@ -37,9 +38,50 @@ export default class ArtworkPage extends React.Component {
       });
     };
 
-    this.trashClicked = ()=>{
-      console.log("trash Clicked");
+    this.layerUpClicked  = ()=>{
+      if(this.state.selectedStampIndex == -1){
+        return ; //do nothing
+      }
 
+      if( this.state.selectedStampIndex  == this.state.artwork.stamps.length - 1){
+        return ;
+      }
+
+      const deleted  = this.state.artwork.stamps.splice(this.state.selectedStampIndex, 1)[0];
+      const newIndex = this.state.selectedStampIndex + 1;
+
+      this.state.artwork.stamps.splice(newIndex, 0, deleted);
+
+
+      this.setState({
+        artwork:            this.state.artwork,
+        selectedStampIndex: newIndex
+      });
+    };
+
+    this.layerDownClicked  = ()=>{
+      if(this.state.selectedStampIndex == -1){
+        return ; //do nothing
+      }
+
+      if( this.state.selectedStampIndex  == 0 ){
+        return ;
+      }
+
+      const deleted  = this.state.artwork.stamps.splice(this.state.selectedStampIndex, 1)[0];
+      const newIndex = this.state.selectedStampIndex - 1;
+
+      this.state.artwork.stamps.splice(newIndex, 0, deleted);
+
+
+      this.setState({
+        artwork:            this.state.artwork,
+        selectedStampIndex: newIndex
+      });
+    };
+
+
+    this.trashClicked = ()=>{
       if(this.state.selectedStampIndex == -1){
         return ; //do nothing
       }
@@ -136,7 +178,15 @@ export default class ArtworkPage extends React.Component {
       };
     }
 
+
+    this.onStampSelected = (e, stamp, index)=>{
+      this.setState({
+        selectedStampIndex:index
+      }); 
+    }
   }
+
+
 
   log(str){
     
@@ -157,6 +207,8 @@ export default class ArtworkPage extends React.Component {
           return console.log("err");
         }
         console.log("saved");
+        console.log(res.body.received);
+        
       });
   }
 
@@ -183,6 +235,8 @@ export default class ArtworkPage extends React.Component {
     });
   }
 
+
+
   render () {
     const artwork = window.data.artwork;
     return pug`
@@ -203,16 +257,26 @@ export default class ArtworkPage extends React.Component {
         .pageLayout__content
           .pageLayout__main
             .pageLayout__artBoard(onClick=this.teePanelClicked)
-              TeePanel(artwork=artwork zoom=this.state.zoom 
-                selectedStampIndex=this.state.selectedStampIndex
-                onClick=${(e,s,i,a)=>this.onStampClick(e,s,i,a)}
-                onDragEnter=${(e,s,i,a)=>this.onStampDragEnter(e,s,i,a)}
-                onDrag=${(e,s,i,a)=>this.onStampDrag(e,s,i,a)}
-                onDragEnd=${(e,s,i,a)=>this.onStampDragEnd(e,s,i,a)})
+              TeePanel(
+                artwork            = artwork 
+                zoom               = this.state.zoom 
+                selectedStampIndex = this.state.selectedStampIndex
+                onClick            = ${(e,s,i,a)=>this.onStampClick(e,s,i,a)}
+                onDragEnter        = ${(e,s,i,a)=>this.onStampDragEnter(e,s,i,a)}
+                onDrag             = ${(e,s,i,a)=>this.onStampDrag(e,s,i,a)}
+                onDragEnd          = ${(e,s,i,a)=>this.onStampDragEnd(e,s,i,a)})
+
             .pageLayout__toolBox
               ToolBox(
-                zoomClicked =this.zoomClicked
-                trashClicked=this.trashClicked)
+                zoomClicked      = this.zoomClicked
+                layerUpClicked   = this.layerUpClicked
+                layerDownClicked = this.layerDownClicked
+                trashClicked     = this.trashClicked )
+
+            .pageLayout__layerBox
+              LayerPanel(artwork=artwork selectedStampIndex=this.state.selectedStampIndex
+                onStampSelected=${this.onStampSelected})
+
           .pageLayout__stampPool
             StampPool(stampGroups=stampGroups
               onStampSelected=${(stamp)=>this.handleStampSelected(stamp)})

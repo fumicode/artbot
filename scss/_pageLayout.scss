@@ -59,6 +59,15 @@
     right:$artBoard-side-padding - $toolBox-width;
 }
 
+.pageLayout__layerBox{
+  width:$toolBox-width;
+
+  position:absolute;
+    bottom:0;
+    left:  $artBoard-side-padding - $toolBox-width;
+
+}
+
 .pageLayout__stampPool{
   position:absolute;
     left:0;

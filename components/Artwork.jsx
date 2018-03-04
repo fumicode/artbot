@@ -75,7 +75,7 @@ export default class Artwork extends React.Component {
           .artwork__inner
             each stamp,index in this.props.artwork.stamps
 
-              Stamp(key=${index}
+              Stamp(key=${stamp.image}
                 scale_disp_cm=${scale_disp_cm}
                 scale_disp_real=${scale_disp_real}
                 x=${stamp.transform.position.x}

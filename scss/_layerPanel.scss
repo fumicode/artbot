@@ -1,0 +1,17 @@
+.layerPanel{
+
+  width:40px;
+
+}
+
+.layerPanel__layer{
+  
+
+  &.--selected{
+    background:#eee;
+  }
+}
+
+.layerPanel__stamp{
+
+}

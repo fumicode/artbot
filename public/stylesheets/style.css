@@ -841,6 +841,13 @@ a {
   right: 20px; }
 
 /* line 62, scss/_pageLayout.scss */
+.pageLayout__layerBox {
+  width: 90px;
+  position: absolute;
+  bottom: 0;
+  left: 20px; }
+
+/* line 71, scss/_pageLayout.scss */
 .pageLayout__stampPool {
   position: absolute;
   left: 0;
@@ -1138,5 +1145,13 @@ a {
   background: white;
   border: 2px solid #000;
   margin: -10px; }
+
+/* line 1, scss/_layerPanel.scss */
+.layerPanel {
+  width: 40px; }
+
+/* line 10, scss/_layerPanel.scss */
+.layerPanel__layer.--selected {
+  background: #eee; }
 
 /*# sourceMappingURL=style.css.map */
