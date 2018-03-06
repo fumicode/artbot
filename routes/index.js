@@ -31,7 +31,7 @@ router.post('/artworks', function(req, res, next) {
               w:2,
               h:2
             },
-            rotate:0
+            rotate:45
           }
         },
         {
@@ -45,7 +45,7 @@ router.post('/artworks', function(req, res, next) {
               w:2.3,
               h:2.3
             },
-            rotate:0
+            rotate:10
           }
         },
         {
@@ -59,7 +59,7 @@ router.post('/artworks', function(req, res, next) {
               w:2.5,
               h:2.5
             },
-            rotate:0
+            rotate:190
           }
         },
       ]

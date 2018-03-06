@@ -102,11 +102,10 @@ export default class ArtworkPage extends React.Component {
     this.onStampDragEnter = (e, stamp, index)=>{
       this.log("start")
       
-      const mainTouch =   e.touches[0];
+      const mainTouch =  e.touches && e.touches[0];
       const pageX = mainTouch ? mainTouch.pageX : e.pageX;
       const pageY = mainTouch ? mainTouch.pageY : e.pageY;
       const dragStartPoint = new Vec2(pageX, pageY);
-
 
       this.setState({
         selectedStampIndex:index
@@ -118,7 +117,9 @@ export default class ArtworkPage extends React.Component {
     }
 
     this.onStampDrag = (e, stamp, index, artworkState)=>{
-      const mainTouch =   e.touches[0];
+
+      
+      const mainTouch =  e.touches && e.touches[0];
       const pageX = mainTouch ? mainTouch.pageX : e.pageX;
       const pageY = mainTouch ? mainTouch.pageY : e.pageY;
 

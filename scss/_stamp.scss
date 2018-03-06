@@ -27,15 +27,16 @@
 }
 
 .stamp__sizePoint{
+  $size: 40px;
   position:absolute;
 
-  width:20px;
-  height:20px;
-  border-radius:10px;
+  width:$size;
+  height:$size;
+  border-radius:$size/2;
   background:white;
   border:2px solid #000;
 
-  margin:-10px;
+  margin:-$size/2;
   
   &.--tl{
     top:0;
@@ -73,18 +74,20 @@
 }
 
 .stamp__rotatePoint{
+  $size: 40px;
+
   position:absolute;
 
     bottom:-30px;
     left:50%;
 
-  width:20px;
-  height:20px;
-  border-radius:10px;
+  width:$size;
+  height:$size;
+  border-radius:$size/2;
   background:white;
   border:2px solid #000;
 
-  margin:-10px;
+  margin:-$size/2;
 
 }
 
