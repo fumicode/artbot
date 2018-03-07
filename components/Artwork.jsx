@@ -64,7 +64,6 @@ export default class Artwork extends React.Component {
     const scale_px_cm     = this.state.scale_px_cm;
     const scale_disp_cm   = this.state.scale_disp_cm;
 
-
     return pug`
       .artwork(onTouchMove=${(e)=>e.preventDefault()})
         if !noBorder
@@ -83,6 +82,7 @@ export default class Artwork extends React.Component {
                 stamp=${stamp} index=${index}
                 artworkState = ${this.state}
                 selected=${this.props.selectedStampIndex == index }
+                stampChanged=this.props.stampChanged
 
                 onClick     = ${this.props.onClick    }
                 onDragEnter = ${this.props.onDragEnter}

@@ -25,6 +25,8 @@ export default class TeePanel extends React.Component {
               realWidth="30cm" realHeight="40cm" 
               displayWidth=460 noBorder=noBorder 
 
+              stampChanged=${this.props.stampChanged}
+
               onClick=${this.props.onClick}
               onDragEnter=${this.props.onDragEnter}
               onDrag=${this.props.onDrag}
@@ -40,6 +42,8 @@ export default class TeePanel extends React.Component {
               selectedStampIndex=this.props.selectedStampIndex
               realWidth="30cm" realHeight="40cm" 
               displayWidth=(w || 260) noBorder=noBorder 
+
+              stampChanged=${this.props.stampChanged}
 
               onClick=${this.props.onClick}
               onDragEnter=${this.props.onDragEnter}

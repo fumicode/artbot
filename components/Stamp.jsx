@@ -1,6 +1,7 @@
 import React from 'react';
 import path from 'path';
 import Vec2 from './lib/Vec2';
+import Angle from './lib/Angle';
 
 export default class Stamp extends React.Component {
   constructor(props){
@@ -12,30 +13,21 @@ export default class Stamp extends React.Component {
     }
   }
 
-
   //rotate//
   onRotateTouchStart(e, stamp,index, artworkState){
     e.stopPropagation();
-
     const stampRect = this.refs.theStamp.getBoundingClientRect();
     const stampCenter = new Vec2(stampRect.x + stampRect.width/2, stampRect.y + stampRect.height/2);
-
     //基準の大きさを用意 ・・・いつも同じだと思うけど
 
-
-    //中心から、ドラッグポイントまでの距離
-    //スタンプは基本10cm
-    const baseSize = this.props.scale_disp_cm * (10/2 * 1.414);
-
     this.rotateDragInfo = { 
-      stampCenter,
-      baseSize
+      stampCenter
     } 
   }
 
   onRotateTouchMove(e, stamp, index, artworkState){
     console.log("not dragging");
-    if(!this.sizeDragInfo ){
+    if(!this.rotateDragInfo ){
       console.log("not dragging");
       return;
     }
@@ -53,20 +45,19 @@ export default class Stamp extends React.Component {
     const draggingPoint =  new Vec2(pageX, pageY);
 
     //中心から、今の場所へのベクトル
-    const moveVec = draggingPoint.getSub(this.sizeDragInfo.stampCenter);
+    const moveVec = draggingPoint.getSub(this.rotateDragInfo.stampCenter);
 
+
+    const angle = new Angle(moveVec.getTheta()); //radian
+
+    angle.add( -Math.PI/2 );
 
     console.log("moveVec");
     console.log(moveVec);
+    console.log("moveVec angle");
+    console.log(angle);
 
-
-    console.log("bigRatio");
-    const resizeRatio = moveVec.getLength() / this.sizeDragInfo.baseSize;
-    const nextRatio =  resizeRatio;
-
-    console.log(resizeRatio );
-
-    this.props.stamp.transform.scale={w:nextRatio , h:nextRatio }
+    this.props.stamp.transform.rotate = angle.getDeg()
     this.setState({})
 
   }
@@ -77,6 +68,9 @@ export default class Stamp extends React.Component {
     console.log("rotate touch end");
 
     this.rotateDragInfo = null;
+
+
+    this.props.stampChanged();
   }
 
 
@@ -152,6 +146,8 @@ export default class Stamp extends React.Component {
 
     this.sizeDragInfo = null;
 
+    this.props.stampChanged();
+
     e.stopPropagation();
   }
 
@@ -166,7 +162,6 @@ export default class Stamp extends React.Component {
     const y = this.props.y;
 
     const artworkState = this.props.artworkState;
-
 
     return pug`
       .stamp(

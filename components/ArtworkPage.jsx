@@ -185,6 +185,10 @@ export default class ArtworkPage extends React.Component {
         selectedStampIndex:index
       }); 
     }
+
+    this.stampChanged  = ()=>{
+      this.postArtwork();
+    }
   }
 
 
@@ -220,6 +224,7 @@ export default class ArtworkPage extends React.Component {
     }
   }
 
+
   handleStampSelected(stamp_image_path){
     const new_stamp = {
       image:stamp_image_path,
@@ -236,10 +241,9 @@ export default class ArtworkPage extends React.Component {
     });
   }
 
-
-
   render () {
     const artwork = window.data.artwork;
+
     return pug`
       .pageLayout
         .pageLayout__topbar
@@ -262,6 +266,8 @@ export default class ArtworkPage extends React.Component {
                 artwork            = artwork 
                 zoom               = this.state.zoom 
                 selectedStampIndex = this.state.selectedStampIndex
+
+                stampChanged       = this.stampChanged
                 onClick            = ${(e,s,i,a)=>this.onStampClick(e,s,i,a)}
                 onDragEnter        = ${(e,s,i,a)=>this.onStampDragEnter(e,s,i,a)}
                 onDrag             = ${(e,s,i,a)=>this.onStampDrag(e,s,i,a)}

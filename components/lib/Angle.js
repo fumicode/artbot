@@ -128,6 +128,9 @@ Angle.prototype.get = function(){ // min <= th < max
   return this.theta;
 }
 
+Angle.prototype.getDeg = function(){ // min <= th < max
+  return this.theta /Math.PI *180;
+}
 
 Angle.prototype.toString = function(){ // min <= th < max
   return "(" + this.theta +  ", " + this.min +", " + this.max + ")";
