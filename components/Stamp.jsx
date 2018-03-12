@@ -7,14 +7,14 @@ export default class Stamp extends React.Component {
   constructor(props){
     super();
 
-    this.onClick = (e, stamp, index, artworkState)=>{
+    this.onClick = (e, stamp, index)=>{
       e.stopPropagation();
-      this.props.onClick(e, stamp,index, artworkState)
+      this.props.onClick(e, stamp,index)
     }
   }
 
   //rotate//
-  onRotateTouchStart(e, stamp,index, artworkState){
+  onRotateTouchStart(e, stamp,index){
     e.stopPropagation();
     const stampRect = this.refs.theStamp.getBoundingClientRect();
     const stampCenter = new Vec2(stampRect.x + stampRect.width/2, stampRect.y + stampRect.height/2);
@@ -25,7 +25,7 @@ export default class Stamp extends React.Component {
     } 
   }
 
-  onRotateTouchMove(e, stamp, index, artworkState){
+  onRotateTouchMove(e, stamp, index){
     console.log("not dragging");
     if(!this.rotateDragInfo ){
       console.log("not dragging");
@@ -62,7 +62,7 @@ export default class Stamp extends React.Component {
 
   }
 
-  onRotateTouchEnd(e, stamp,index, artworkState){
+  onRotateTouchEnd(e, stamp,index){
     e.stopPropagation();
 
     console.log("rotate touch end");
@@ -77,7 +77,7 @@ export default class Stamp extends React.Component {
 
 
 
-  onSizeTouchStart(e, stamp,index, artworkState){
+  onSizeTouchStart(e, stamp,index){
     e.stopPropagation();
     /*
     const mainTouch =  e.touches && e.touches[0];
@@ -103,7 +103,7 @@ export default class Stamp extends React.Component {
     } 
   }
 
-  onSizeTouchMove(e, stamp, index, artworkState){
+  onSizeTouchMove(e, stamp, index){
     console.log("not dragging");
     if(!this.sizeDragInfo ){
       console.log("not dragging");
@@ -141,7 +141,7 @@ export default class Stamp extends React.Component {
 
   }
 
-  onSizeTouchEnd(e, stamp,index, artworkState){
+  onSizeTouchEnd(e, stamp,index){
     console.log("touch end");
 
     this.sizeDragInfo = null;
@@ -161,7 +161,6 @@ export default class Stamp extends React.Component {
     const x = this.props.x;
     const y = this.props.y;
 
-    const artworkState = this.props.artworkState;
 
     return pug`
       .stamp(
@@ -173,40 +172,40 @@ export default class Stamp extends React.Component {
         ref="theStamp"
 
         onClick     =this.onClick
-        onMouseDown  =${(e)=> {this.props.onDragEnter (e, stamp,index, artworkState)}}
-        onMouseMove  =${(e)=> {this.props.onDrag      (e, stamp,index, artworkState)}}
-        onMouseUp    =${(e)=> {this.props.onDragEnd   (e, stamp,index, artworkState)}}
-        onTouchStart =${(e)=> {this.props.onDragEnter (e, stamp,index, artworkState)}}
-        onTouchMove  =${(e)=> {this.props.onDrag      (e, stamp,index, artworkState)}}
-        onTouchEnd   =${(e)=> {this.props.onDragEnd   (e, stamp,index, artworkState)}})
+        onMouseDown  =${(e)=> {this.props.onDragEnter (e, stamp,index)}}
+        onMouseMove  =${(e)=> {this.props.onDrag      (e, stamp,index, scale_disp_cm)}}
+        onMouseUp    =${(e)=> {this.props.onDragEnd   (e, stamp,index)}}
+        onTouchStart =${(e)=> {this.props.onDragEnter (e, stamp,index)}}
+        onTouchMove  =${(e)=> {this.props.onDrag      (e, stamp,index, scale_disp_cm)}}
+        onTouchEnd   =${(e)=> {this.props.onDragEnd   (e, stamp,index)}})
 
         img.stamp__img( src=${path.join("/images/stamps/600/",stamp.image)})
 
         if(this.props.selected)
           .stamp__boundBox
             .stamp__sizePoint.--tl(
-              onTouchStart =${(e)=> {this.onSizeTouchStart(e, stamp, index, artworkState)}}
-              onTouchMove  =${(e)=> {this.onSizeTouchMove (e, stamp, index, artworkState)}}
-              onTouchEnd   =${(e)=> {this.onSizeTouchEnd  (e, stamp, index, artworkState)}})
+              onTouchStart =${(e)=> {this.onSizeTouchStart(e, stamp, index)}}
+              onTouchMove  =${(e)=> {this.onSizeTouchMove (e, stamp, index)}}
+              onTouchEnd   =${(e)=> {this.onSizeTouchEnd  (e, stamp, index)}})
             .stamp__sizePoint.--tr(
-              onTouchStart =${(e)=> {this.onSizeTouchStart(e, stamp, index, artworkState)}}
-              onTouchMove  =${(e)=> {this.onSizeTouchMove (e, stamp, index, artworkState)}}
-              onTouchEnd   =${(e)=> {this.onSizeTouchEnd  (e, stamp, index, artworkState)}})
+              onTouchStart =${(e)=> {this.onSizeTouchStart(e, stamp, index)}}
+              onTouchMove  =${(e)=> {this.onSizeTouchMove (e, stamp, index)}}
+              onTouchEnd   =${(e)=> {this.onSizeTouchEnd  (e, stamp, index)}})
             .stamp__sizePoint.--bl(
-              onTouchStart =${(e)=> {this.onSizeTouchStart(e, stamp, index, artworkState)}}
-              onTouchMove  =${(e)=> {this.onSizeTouchMove (e, stamp, index, artworkState)}}
-              onTouchEnd   =${(e)=> {this.onSizeTouchEnd  (e, stamp, index, artworkState)}})
+              onTouchStart =${(e)=> {this.onSizeTouchStart(e, stamp, index)}}
+              onTouchMove  =${(e)=> {this.onSizeTouchMove (e, stamp, index)}}
+              onTouchEnd   =${(e)=> {this.onSizeTouchEnd  (e, stamp, index)}})
             .stamp__sizePoint.--br(
-              onTouchStart =${(e)=> {this.onSizeTouchStart(e, stamp, index, artworkState)}}
-              onTouchMove  =${(e)=> {this.onSizeTouchMove (e, stamp, index, artworkState)}}
-              onTouchEnd   =${(e)=> {this.onSizeTouchEnd  (e, stamp, index, artworkState)}})
+              onTouchStart =${(e)=> {this.onSizeTouchStart(e, stamp, index)}}
+              onTouchMove  =${(e)=> {this.onSizeTouchMove (e, stamp, index)}}
+              onTouchEnd   =${(e)=> {this.onSizeTouchEnd  (e, stamp, index)}})
 
             .stamp__rotateBar
 
             .stamp__rotatePoint(
-              onTouchStart =${(e)=> {this.onRotateTouchStart(e, stamp, index, artworkState)}}
-              onTouchMove  =${(e)=> {this.onRotateTouchMove (e, stamp, index, artworkState)}}
-              onTouchEnd   =${(e)=> {this.onRotateTouchEnd  (e, stamp, index, artworkState)}})
+              onTouchStart =${(e)=> {this.onRotateTouchStart(e, stamp, index)}}
+              onTouchMove  =${(e)=> {this.onRotateTouchMove (e, stamp, index)}}
+              onTouchEnd   =${(e)=> {this.onRotateTouchEnd  (e, stamp, index)}})
           
           
     `;

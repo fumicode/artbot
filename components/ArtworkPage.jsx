@@ -116,7 +116,7 @@ export default class ArtworkPage extends React.Component {
       };
     }
 
-    this.onStampDrag = (e, stamp, index, artworkState)=>{
+    this.onStampDrag = (e, stamp, index, scale_disp_cm)=>{
 
       
       const mainTouch =  e.touches && e.touches[0];
@@ -124,7 +124,7 @@ export default class ArtworkPage extends React.Component {
       const pageY = mainTouch ? mainTouch.pageY : e.pageY;
 
       
-      const scale_cm_disp = 1/artworkState.scale_disp_cm;
+      const scale_cm_disp = 1/scale_disp_cm;
 
       if(!this.dragInfo){
 

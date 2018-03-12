@@ -21,7 +21,9 @@ export default class TeePanel extends React.Component {
           .teePanel__teeImage(style={top:"-200px", left:"-200px", right:"-200px",bottom:"-200px",
             backgroundImage: "url(/images/"+bgImg+".png)"})
           div(style={position:"absolute", top:"0px", left:"35px"})
-            Artwork(artwork=this.props.artwork 
+            Artwork(
+              artwork=this.props.artwork 
+              selectedStampIndex=this.props.selectedStampIndex
               realWidth="30cm" realHeight="40cm" 
               displayWidth=460 noBorder=noBorder 
 
