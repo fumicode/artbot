@@ -1,6 +1,7 @@
 .artwork{
   position:relative;
   display:inline-block;
+
 }
 
 .artwork__printArea{
@@ -15,10 +16,10 @@
     left:0;
     right:0;
     bottom:0;
-
   border-style:dashed;
   border-width:5px;
   border-color:#9e9e9e;
+
 }
 
 .artwork__inner{
@@ -27,4 +28,8 @@
     left:0;
     right:0;
     bottom:0;
+
+  &.--hidden{
+    overflow:hidden;
+  }
 }

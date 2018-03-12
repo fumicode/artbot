@@ -40,10 +40,6 @@ block content
                     div(style="position:relative;  height:380px; ")
                       #ArtworkSweat
 
-                if error
-                  tr
-                    td(style="color:red") エラー: !{error}
-
                 tr
                   td
                     p Tee White
@@ -102,13 +98,13 @@ block content
                         td.valueTable__size 
                       tr
                         td.valueTable__input
-                          input(type="number" name="sweat_gray_size_36"
+                          input(type="number" name="sweat_size_36"
                             value="#{order.items_sizes && order.items_sizes.sweat.sweat_gray_36 || ''}")
                         td.valueTable__input
-                          input(type="number" name="sweat_gray_size_38"
+                          input(type="number" name="sweat_size_40"
                             value="#{order.items_sizes && order.items_sizes.sweat.sweat_gray_38 || ''}")
                         td.valueTable__input
-                          input(type="number" name="sweat_gray_size_40"
+                          input(type="number" name="sweat_size_44"
                             value="#{order.items_sizes && order.items_sizes.sweat.sweat_gray_40 || ''}")
                         td.valueTable__input 
                         td.valueTable__input 
@@ -119,7 +115,7 @@ block content
                 tr
                   td 整理券番号<br>Ticket number
                   td 
-                    input(type="number" name="ticket" 
+                    input(type="text" name="ticket" 
                       value="#{order.ticket && order.ticket || ''}")
                   td お客様名<br> Your name
                   td 

@@ -1,13 +1,11 @@
 import React from 'react';
 import path from 'path';
-
 import Stamp from './Stamp.jsx';
 
 export default class Artwork extends React.Component {
 
   constructor(props){
     super();
-
     //とりあえず本物で設定してみる
     //次にレンダーする
     this.state = {
@@ -38,7 +36,6 @@ export default class Artwork extends React.Component {
     console.log("scale_px_cm");
     console.log(scale_px_cm);
 
-
     console.log("-------------");
 
     return scale_px_cm;
@@ -55,7 +52,6 @@ export default class Artwork extends React.Component {
       });
       return ;
     }
-
       renderWidth:props.realWidth,
       renderHeight:props.realHeight,
       scale_px_cm:1,
@@ -68,7 +64,6 @@ export default class Artwork extends React.Component {
     //暫定のcm描画から、this.state.scale_px_cmがわかる
     const scale_px_cm = this.measureScale(this.props);
 
-
     //これによって再描画する。
     this.setState({ 
       scale_px_cm //これだけは、かわらないもの。
@@ -76,14 +71,10 @@ export default class Artwork extends React.Component {
    
   }
 
-
-
   render () {
     //一度cmでレンダリングしてみてから、pxを測り、表示したい大きさに合わせて縮小表示する。
     //これが実行されたあとに、レンダリング前に、componentDidMountが呼ばれ、changeSizeが呼ばれる。
     //これにより、scaple_px_cmがわかるのが大事
-
-
     const noBorder = this.props.noBorder || false;
 
     let scale_px_cm     ;
@@ -103,7 +94,15 @@ export default class Artwork extends React.Component {
     let renderWidth     ;
     let renderHeight    ;
 
-    if(this.state.scale_px_cm){
+    if(this.props.displayReal) {
+      renderWidth     = this.props.realWidth  ;
+      renderHeight    = this.props.realHeight ;
+
+      scale_px_cm     = this.state.scale_px_cm;
+      scale_disp_real = 1; //displayWidthとかは無視して、realな大きさを普通に表示する
+      scale_disp_cm   = scale_disp_real * scale_px_cm;
+    }
+    else if(this.state.scale_px_cm){
       console.log("render with scale_px_cm");
 
       scale_px_cm     = this.state.scale_px_cm;
@@ -147,6 +146,9 @@ export default class Artwork extends React.Component {
       scale_disp_real = 1; //わかんないけど、stampでエラーが出なければおk
 
     }
+
+    console.log("this.props.cutOver");
+    console.log(this.props.cutOver);
     
     return pug`
       .artwork(onTouchMove=${(e)=>e.preventDefault()})
@@ -155,7 +157,7 @@ export default class Artwork extends React.Component {
         .artwork__printArea(style={
           width: renderWidth , height: renderHeight }
           ref="printArea")
-          .artwork__inner
+          .artwork__inner(className=${this.props.hidden ? '--hidden':''})
             each stamp,index in this.props.artwork.stamps
               Stamp(key=${stamp.image}
                 scale_disp_cm=${scale_disp_cm}

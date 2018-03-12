@@ -859,11 +859,11 @@ a {
   position: relative;
   display: inline-block; }
 
-/* line 6, scss/_artwork.scss */
+/* line 7, scss/_artwork.scss */
 .artwork__printArea {
   transform-origin: top left; }
 
-/* line 12, scss/_artwork.scss */
+/* line 13, scss/_artwork.scss */
 .artwork__printBorder {
   position: absolute;
   top: 0;
@@ -874,13 +874,16 @@ a {
   border-width: 5px;
   border-color: #9e9e9e; }
 
-/* line 24, scss/_artwork.scss */
+/* line 25, scss/_artwork.scss */
 .artwork__inner {
   position: absolute;
   top: 0cm;
   left: 0;
   right: 0;
   bottom: 0; }
+  /* line 32, scss/_artwork.scss */
+  .artwork__inner.--hidden {
+    overflow: hidden; }
 
 /* line 1, scss/_topbar.scss */
 .topbar {
@@ -1152,6 +1155,15 @@ a {
 
 /* line 10, scss/_layerPanel.scss */
 .layerPanel__layer.--selected {
-  background: #eee; }
+  background: #FFF000; }
+
+/* line 1, scss/_checkPage.scss */
+.checkPage {
+  padding: 0 20px; }
+
+/* line 6, scss/_valueTable.scss */
+table.valueTable .valueTable__input {
+  padding: 3px;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */

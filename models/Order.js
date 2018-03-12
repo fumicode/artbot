@@ -23,6 +23,10 @@ const ItemsSizesSchema = new Schema({
     sweat_36:Number,
     sweat_40:Number,
     sweat_44:Number,
+
+    sweat_gray_36:Number,
+    sweat_gray_38:Number,
+    sweat_gray_40:Number,
   }
 });
 

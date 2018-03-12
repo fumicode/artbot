@@ -141,26 +141,65 @@ router.get('/orders/:order_id', function(req, res, next) {
   res.render('order', {order: req.order, artwork:req.order.artwork});
 });
 
-router.post('/orders/:order_id', function(req, res, next) { 
+function itemNum(is){
+  const teeNum = 
+    is.tee.tee_36 + 
+    is.tee.tee_38 + 
+    is.tee.tee_40 + 
+    is.tee.tee_42 + 
+    is.tee.tee_44 + 
+    0;
 
+  const sweatWhiteNum = 
+    is.sweat.sweat_36 + 
+    is.sweat.sweat_40 + 
+    is.sweat.sweat_44 + 
+    0;
+
+  const sweatGrayNum = 
+    is.sweat.sweat_gray_36 + 
+    is.sweat.sweat_gray_38 + 
+    is.sweat.sweat_gray_40 + 
+    0;
+
+
+  
+
+  return {
+    teeNum,
+    sweatWhiteNum,
+    sweatGrayNum,
+    total: teeNum + sweatWhiteNum + sweatGrayNum
+  }
+}
+
+router.post('/orders/:order_id', function(req, res, next) { 
   co(function*(){
     const itemsSizes = {
       tee:{
-        tee_36: parseInt(req.body.tee_size_36),
-        tee_38: parseInt(req.body.tee_size_38 ),
-        tee_40: parseInt(req.body.tee_size_40 ),
-        tee_42: parseInt(req.body.tee_size_42 ),
-        tee_44: parseInt(req.body.tee_size_44 ),
+        tee_36: parseInt(req.body.tee_size_36) || 0,
+        tee_38: parseInt(req.body.tee_size_38) || 0,
+        tee_40: parseInt(req.body.tee_size_40) || 0,
+        tee_42: parseInt(req.body.tee_size_42) || 0,
+        tee_44: parseInt(req.body.tee_size_44) || 0,
       },
       sweat:{
-        sweat_36: parseInt(req.body.sweat_size_36),
-        sweat_40: parseInt(req.body.sweat_size_40),
-        sweat_44: parseInt(req.body.sweat_size_44),
+        sweat_36: parseInt(req.body.sweat_size_36) || 0,
+        sweat_40: parseInt(req.body.sweat_size_40) || 0,
+        sweat_44: parseInt(req.body.sweat_size_44) || 0,
+
+        sweat_gray_36: parseInt(req.body.sweat_gray_size_36) || 0,
+        sweat_gray_38: parseInt(req.body.sweat_gray_size_38) || 0,
+        sweat_gray_40: parseInt(req.body.sweat_gray_size_40) || 0,
       }
     };
 
-    const ticket = req.body.ticket;
+    const numbers = itemNum(itemsSizes);
+
+
     const cust_name= req.body.cust_name;
+
+    const ticket = req.body.ticket;
 
     req.order.items_sizes = itemsSizes;
     req.order.cust_name   = cust_name;
@@ -170,6 +209,23 @@ router.post('/orders/:order_id', function(req, res, next) {
     
     //うまく行ってなかったら、だめだけど、
     //うまくいってたら、 checkに飛ぶ
+
+
+    console.log(numbers)
+
+    if(numbers.total <= 0){
+      console.log("total no 0")
+      return res.render('order', {order: req.order, artwork:req.order.artwork, error:"一つも選択されていません。"});
+    }
+
+    if(!ticket){
+      return res.render('order', {order: req.order, artwork:req.order.artwork, error:"チケット番号を入力してください"});
+    }
+
+    if(!cust_name){
+      return res.render('order', {order: req.order, artwork:req.order.artwork, error:"お客様の名前を入力してください"});
+    }
+
 
     res.redirect(path.join(req.url,"check"));
 

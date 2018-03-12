@@ -28,53 +28,102 @@ block content
                 form(method="POST" action="#{url}" style="display:inline-block")
                   button.moveButton.--next(type="submit") 
                     img(src="/images/button_submit.png" alt="SUBMIT")
-            
-      .pageLayout__content
-        .checkPage
-          form
-            table.n
-              tr
-                td
-                  div(style="position:relative; height:380px;")
-                    #ArtworkTee
-                td
-                  div(style="position:relative;  height:380px; ")
-                    #ArtworkSweat
 
-                  
-              tr
-                td
-                  table.n
-                    tr
-                      td 36
-                      td 38
-                      td 40
-                      td 42
-                      td 44
-                    tr
-                      td #{order && order.items_sizes.tee.tee_36}
-                      td #{order && order.items_sizes.tee.tee_38}
-                      td #{order && order.items_sizes.tee.tee_40}
-                      td #{order && order.items_sizes.tee.tee_42}
-                      td #{order && order.items_sizes.tee.tee_44}
+        .pageLayout__content
+          .checkPage
+            form
+              table.n.previewOrder
+                tr
+                  td
+                    div(style="position:relative; height:380px;")
+                      #ArtworkTee
+                  td
+                    div(style="position:relative;  height:380px; ")
+                      #ArtworkSweat
 
-                td
-                  table.n
-                    tr
-                      td 36
-                      td 40
-                      td 44
-                    tr
-                      td #{order && order.items_sizes.sweat.sweat_36}
-                      td #{order && order.items_sizes.sweat.sweat_40}
-                      td #{order && order.items_sizes.sweat.sweat_44}
+                if error
+                  tr
+                    td(style="color:red") エラー: !{error}
 
-            hr.space 
+                tr
+                  td
+                    p Tee White
+                    table.n.valueTable
+                      tr
+                        td.valueTable__size 36
+                        td.valueTable__size 38
+                        td.valueTable__size 40
+                        td.valueTable__size 42
+                        td.valueTable__size 44
+                      tr
+                        td.valueTable__input
+                          input(type="number" name="tee_size_36" disabled
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_36 || ''}")
+                        td.valueTable__input
+                          input(type="number" name="tee_size_38" disabled
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_38 || ''}")
+                        td.valueTable__input
+                          input(type="number" name="tee_size_40" disabled
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_40 || ''}")
+                        td.valueTable__input
+                          input(type="number" name="tee_size_42" disabled
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_42 || ''}")
+                        td.valueTable__input
+                          input(type="number" name="tee_size_44" disabled
+                            value="#{order.items_sizes && order.items_sizes.tee.tee_44 || ''}")
+                  td
+                    p Sweat White
+                    table.n.valueTable
+                      tr
+                        td.valueTable__size 36
+                        td.valueTable__size 
+                        td.valueTable__size 40
+                        td.valueTable__size 
+                        td.valueTable__size 44
+                      tr
+                        td.valueTable__input
+                          input(type="number" name="sweat_size_36" disabled
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_36 || ''}")
+                        td.valueTable__input 
+                        td.valueTable__input
+                          input(type="number" name="sweat_size_40" disabled
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_40 || ''}")
+                        td.valueTable__input 
+                        td.valueTable__input
+                          input(type="number" name="sweat_size_44" disabled
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_44 || ''}")
 
-            table.n
-              tr
-                td 整理券番号<br>Ticket number
-                td #{order.ticket}
-                  
-                td お客様名<br> Your name
-                td #{order.cust_name}
+                    p Sweat Gray
+                    table.n.valueTable
+                      tr
+                        td.valueTable__size 36
+                        td.valueTable__size 38
+                        td.valueTable__size 40
+                        td.valueTable__size 
+                        td.valueTable__size 
+                      tr
+                        td.valueTable__input
+                          input(type="number" name="sweat_gray_size_36" disabled
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_gray_36 || ''}")
+                        td.valueTable__input
+                          input(type="number" name="sweat_gray_size_38" disabled
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_gray_38 || ''}")
+                        td.valueTable__input
+                          input(type="number" name="sweat_gray_size_40" disabled
+                            value="#{order.items_sizes && order.items_sizes.sweat.sweat_gray_40 || ''}")
+                        td.valueTable__input 
+                        td.valueTable__input 
+
+              hr.space 
+
+              table
+                tr
+                  td 整理券番号<br>Ticket number
+                  td 
+                    input(type="number" name="ticket" disabled
+                      value="#{order.ticket && order.ticket || ''}")
+                  td お客様名<br> Your name
+                  td 
+                    input(type="text" name="cust_name" disabled
+                      value="#{order.cust_name && order.cust_name || ''}")
+
