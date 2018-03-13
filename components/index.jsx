@@ -11,11 +11,11 @@ renderToId('ArtworkPage', pug`
 `);
 
 renderToId('ArtworkTee', pug`
-  TeePanel(artwork=window.data.artwork hidden=true noBorder=true x=110 y=80 w=150)
+  TeePanel(artwork=window.data.artwork hidden=true noBorder=true x=103 y=80 w=150)
 `);
 
 renderToId('ArtworkSweat', pug`
-  TeePanel(artwork=window.data.artwork hidden=true noBorder=true x=105 y=90 w=160 bgImg="sweat")
+  TeePanel(artwork=window.data.artwork hidden=true noBorder=true x=97 y=90 w=160 bgImg="sweat")
 `);
 
 renderToId('ArtworkPreview', pug`

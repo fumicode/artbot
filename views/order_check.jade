@@ -18,7 +18,7 @@ block content
     .pageLayout
       .pageLayout__topbar
         include ./includes/topbar
-        +topbar()
+        +topbar("check")
           table.n.topButtons
             tr
               td.topButtons__cell
@@ -26,7 +26,7 @@ block content
                   img(src="/images/button_back.png" alt="BACK")
               td.topButtons__cell
                 form(method="POST" action="#{url}" style="display:inline-block")
-                  button.moveButton.--next(type="submit") 
+                  button.moveButton.--next.--blink(type="submit" style="animation-delay:3s") 
                     img(src="/images/button_submit.png" alt="SUBMIT")
 
         .pageLayout__content

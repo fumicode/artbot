@@ -1,7 +1,5 @@
 extends layout
 
-
-
 block append body-end
   script.
     const data = window.data = {
@@ -94,7 +92,10 @@ block content
               td Sweat Gray 40
               td= sweat.sweat_gray_40
 
-      td= order.time
+      td
+        |作成:#{order.created_str}
+        br
+        |編集:#{order.updated_str}
       td= order.progressStr
 
   div(style="position:relative; width:500px; height:700px; margin:0 auto")
@@ -107,13 +108,11 @@ block content
     form(action="#{path.join(url,'state')}" method="POST")
       button(type="submit" name="order_state" value="delivered") 完了
 
-
   if order.order_state != "ordered" 
     form(action="#{path.join(url,'state')}" method="POST")
       button(type="submit" name="order_state" value="ordered") 印刷待ちに戻す
 
   hr
-
   if order.order_state != "trash" 
     form(action="#{path.join(url,'state')}" method="POST")
       button(type="submit" name="order_state" value="trash") ゴミ箱に入れる

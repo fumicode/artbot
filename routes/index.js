@@ -28,7 +28,7 @@ router.post('/artworks', function(req, res, next) {
               y:25
             },
             scale:{ //10cm が基本
-              w:2,
+              w:2, //これは20cm
               h:2
             },
             rotate:0
@@ -42,7 +42,7 @@ router.post('/artworks', function(req, res, next) {
               y:6
             },
             scale:{
-              w:2.3,
+              w:2.3, //23cm
               h:2.3
             },
             rotate:0
@@ -62,7 +62,9 @@ router.post('/artworks', function(req, res, next) {
             rotate:0
           }
         },
-      ]
+      ],
+      created: new Date()
+
     });
 
     const savedArtwork = yield newArtwork.save();
@@ -91,6 +93,8 @@ router.get('/artworks/:artwork_id', function(req, res, next) {
 router.post('/artworks/:artwork_id', function(req, res, next) { 
   co(function*(){
     req.artwork.stamps = req.body.stamps;
+    req.artwork.updated = new Date();
+
     const savedArtwork = yield req.artwork.save();
 
     res.json({
@@ -111,6 +115,7 @@ router.post('/orders', function(req, res, next) {
 
     const newOrder = new Order({
       artwork: mongoose.Types.ObjectId(artwork_id),
+      created: new Date()
     });
 
     const savedOrder = yield newOrder.save();
@@ -204,6 +209,7 @@ router.post('/orders/:order_id', function(req, res, next) {
     req.order.items_sizes = itemsSizes;
     req.order.cust_name   = cust_name;
     req.order.ticket = ticket;
+    req.order.updated = new Date();
 
     const savedOrder = yield req.order.save();
     
@@ -240,6 +246,7 @@ router.get('/orders/:order_id/check', function(req, res, next) {
 router.post('/orders/:order_id/check', function(req, res, next) { 
   co(function*(){
     req.order.order_state = "ordered";
+    req.order.updated = new Date();
     const savedOrder = yield req.order.save();
 
     //保存
@@ -256,6 +263,10 @@ router.get('/admin/orders', function(req, res, next) {
   co(function*(){
     const query_order_state = req.query.state || "ordered";
     const orders = yield Order.find({order_state:query_order_state }).exec();
+
+    console.log(orders.created);
+    console.log(orders.updated);
+
     res.render('admin_orders', {orders, state: query_order_state });
 
   }).catch(next);

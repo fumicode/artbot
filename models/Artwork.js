@@ -26,12 +26,36 @@ const StampSchema = new Schema({
   }
 });
 
-const OrderSchema = new Schema({
+const ArtworkSchema = new Schema({
   //id:0,
-  stamps:[ StampSchema ]
+  stamps:[ StampSchema ],
+  created:Date,
+  updated:Date,
 });
 
-module.exports = OrderSchema;
+ArtworkSchema.virtual("created_str").get(function(){
+  if(!this.created)
+    return '';
+
+  const date = (this.created.getDate());
+  const hour = (this.created.getHours());
+  const minute = (this.created.getMinutes());
+
+  return `${date}日${hour}時${minute}分`;
+});
+
+ArtworkSchema.virtual("updated_str").get(function(){
+  if(!this.updated)
+    return '';
+
+  const date =   (this.updated.getDate());
+  const hour =   (this.updated.getHours());
+  const minute = (this.updated.getMinutes());
+
+  return `${date}日${hour}時${minute}分`;
+});
+
+module.exports = ArtworkSchema;
 
 
 

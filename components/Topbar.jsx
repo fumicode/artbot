@@ -18,7 +18,7 @@ export default class Topbar extends React.Component {
                   td.progress__arrow 
                     img.progress__arrowImg(src="/images/prog_arrow.png" alt="arrow")
                   td.progress__item#progress_play.--current
-                    img.progress__img(src="/images/prog_play.png" alt="play")
+                    img.progress__img(src=${"/images/prog_play"+(this.props.current == 'play' ? '_white':'')+".png"} alt="play")
                   td.progress__arrow 
                     img.progress__arrowImg(src="/images/prog_arrow_2.png" alt="arrow")
                   td.progress__item#progress_check

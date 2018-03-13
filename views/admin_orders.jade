@@ -42,7 +42,7 @@ block content
           if !tee_exist  
             p 注文なし
 
-          table.n
+          table.n.orderTeeNum
             if tee.tee_36
               tr
                 td Tee 36
@@ -66,7 +66,7 @@ block content
 
         td
           - var sweat = order.items_sizes.sweat;
-          - var sweat_exist = sweat.sweat_36 || sweat.sweat_40 || sweat.sweat_44;
+          - var sweat_exist = sweat.sweat_36 || sweat.sweat_40 || sweat.sweat_44 || sweat.sweat_gray_36 ||  sweat.sweat_gray_38 ||  sweat.sweat_gray_40;
 
           if !sweat_exist  
             p 注文なし
@@ -102,8 +102,11 @@ block content
                 td Sweat Gray 40
                 td= sweat.sweat_gray_40
 
+        td
+          |作成:#{order.created_str}
+          br
+          |編集:#{order.updated_str}
 
-        td= order.time
         td
           #ArtworkTee
         td

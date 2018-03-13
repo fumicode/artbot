@@ -247,7 +247,7 @@ export default class ArtworkPage extends React.Component {
     return pug`
       .pageLayout
         .pageLayout__topbar
-          Topbar
+          Topbar(current="play")
             table.n.topButtons
               tbody
                 tr
@@ -257,7 +257,7 @@ export default class ArtworkPage extends React.Component {
                   td.topButtons__cell
                     form(method="POST" action="/orders" style={display:"inline-block"})
                       input(type="hidden" name="artwork_id" value=${artwork._id})
-                      button.moveButton.--next(type="submit") 
+                      button.moveButton.--next.--blink(type="submit" style={animationDelay:"180s"}) 
                         img(src="/images/button_done.png" alt="DONE")
         .pageLayout__content
           .pageLayout__main

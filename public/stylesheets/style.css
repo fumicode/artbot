@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -1065,6 +1066,15 @@ a {
   .moveButton img {
     height: 40px; }
 
+/* line 11, scss/_moveButton.scss */
+.moveButton.--blink {
+  animation: Flash1 1s infinite; }
+
+/* アニメーション */
+@keyframes Flash1 {
+  50% {
+    opacity: 0.5; } }
+
 /* line 11, scss/_toolBox.scss */
 .toolBox__tool {
   width: 40px;
@@ -1160,6 +1170,11 @@ a {
 /* line 1, scss/_checkPage.scss */
 .checkPage {
   padding: 0 20px; }
+
+/* line 1, scss/_previewOrder.scss */
+.previewOrder {
+  border-spacing: 10px;
+  border-collapse: separate; }
 
 /* line 6, scss/_valueTable.scss */
 table.valueTable .valueTable__input {

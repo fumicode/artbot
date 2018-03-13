@@ -7,3 +7,17 @@
     height:40px;
   }
 }
+
+.moveButton.--blink{
+  animation: Flash1 1s infinite;
+}
+
+
+/* アニメーション */
+@keyframes Flash1{
+  50%{
+    opacity: 0.5;
+  }
+}
+
+
