@@ -67,16 +67,13 @@ export default class StampPool extends React.Component {
 
 
   render () {
-
     return pug`
       .stampPool(key=0)
-        button.stampPool__foldButton fold
         .stampCategory
           .stampCategory__tabs
             ${this.renderTabs()}
-
           .stampCategory__panels
-              ${this.renderPanel()}
+            ${this.renderPanel()}
     `;
   }
 }

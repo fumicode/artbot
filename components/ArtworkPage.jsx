@@ -275,6 +275,7 @@ export default class ArtworkPage extends React.Component {
 
             .pageLayout__toolBox
               ToolBox(
+                zooming=this.state.zoom
                 zoomClicked      = this.zoomClicked
                 layerUpClicked   = this.layerUpClicked
                 layerDownClicked = this.layerDownClicked

@@ -168,6 +168,7 @@ export default class Artwork extends React.Component {
                 artworkState = ${this.state}
                 selected=${this.props.selectedStampIndex == index }
                 stampChanged=this.props.stampChanged
+                printResolution=this.props.printResolution
 
                 onClick     = ${this.props.onClick    }
                 onDragEnter = ${this.props.onDragEnter}

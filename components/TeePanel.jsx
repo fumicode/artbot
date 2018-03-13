@@ -27,6 +27,8 @@ export default class TeePanel extends React.Component {
               realWidth="30cm" realHeight="40cm" 
               displayWidth=460 noBorder=noBorder 
 
+              hidden=${this.props.hidden}
+              printResolution=${this.props.printResolution}
               stampChanged=${this.props.stampChanged}
 
               onClick=${this.props.onClick}
@@ -45,6 +47,7 @@ export default class TeePanel extends React.Component {
               realWidth="30cm" realHeight="40cm" 
               displayWidth=(w || 260) noBorder=noBorder 
 
+              hidden=${this.props.hidden}
               stampChanged=${this.props.stampChanged}
 
               onClick=${this.props.onClick}

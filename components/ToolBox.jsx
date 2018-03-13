@@ -8,6 +8,7 @@ export default class TeePanel extends React.Component {
 
 
   render () {
+
     return pug`
       .toolBox
         ul.toolBox__list
@@ -23,7 +24,7 @@ export default class TeePanel extends React.Component {
           li.toolBox__margin
           li.toolBox__tool
             button.toolBox__button#tool_zoom(onClick=this.props.zoomClicked)
-              img(src="/images/icon_zoom.png")
+              img(src=${this.props.zooming ? "/images/icon_zoom_2.png": "/images/icon_zoom.png"})
     `;
   }
 }

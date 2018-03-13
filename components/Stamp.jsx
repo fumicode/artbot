@@ -179,7 +179,7 @@ export default class Stamp extends React.Component {
         onTouchMove  =${(e)=> {this.props.onDrag      (e, stamp,index, scale_disp_cm)}}
         onTouchEnd   =${(e)=> {this.props.onDragEnd   (e, stamp,index)}})
 
-        img.stamp__img( src=${path.join("/images/stamps/600/",stamp.image)})
+        img.stamp__img( src=${path.join("/images/stamps/",(this.props.printResolution?'3000':'600'),stamp.image)})
 
         if(this.props.selected)
           .stamp__boundBox
